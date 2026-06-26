@@ -5,7 +5,7 @@ import {
   Handshake, Lightbulb, TrendingUp, Star,
   Shield, Rocket, Heart
 } from 'lucide-react';
-import { useInView } from '../hooks/useInView';
+
 
 const BENEFITS = [
   {
@@ -162,7 +162,6 @@ function TestimonialCard({ name, role, quote, avatar, color, index }) {
 }
 
 export default function WhyJoin() {
-  const [ref, inView] = useInView();
 
   return (
     <section
@@ -178,9 +177,9 @@ export default function WhyJoin() {
 
         {/* Section header */}
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
           className="text-center max-w-2xl mx-auto mb-14"
         >
