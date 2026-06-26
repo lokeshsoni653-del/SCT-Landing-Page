@@ -5,7 +5,7 @@ import {
   Send, CheckCircle,
   MessageSquare, Clock, ArrowRight, Globe
 } from 'lucide-react';
-import { useInView } from '../hooks/useInView';
+
 
 const SOCIAL_LINKS = [
   {
@@ -104,11 +104,11 @@ function useContactForm() {
 
 export default function Contact() {
   const { form, status, errors, handleChange, handleSubmit } = useContactForm();
-  const [ref, inView] = useInView();
 
   const fadeUp = (delay = 0) => ({
     initial:  { opacity: 0, y: 30 },
-    animate:  inView ? { opacity: 1, y: 0 } : {},
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.15 },
     transition: { duration: 0.6, delay, ease: [0.4, 0, 0.2, 1] },
   });
 
@@ -132,7 +132,6 @@ export default function Contact() {
 
         {/* Header */}
         <motion.div
-          ref={ref}
           {...fadeUp(0)}
           className="text-center max-w-2xl mx-auto mb-14"
         >
