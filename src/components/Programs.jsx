@@ -4,7 +4,7 @@ import {
   Code2, Mic, BookMarked, Users, Trophy,
   Lightbulb, Heart, ArrowRight, X, Play
 } from 'lucide-react';
-import { useInView } from '../hooks/useInView';
+
 
 const PROGRAMS = [
   {
@@ -251,7 +251,6 @@ function ProgramModal({ program, onClose }) {
 
 export default function Programs() {
   const [activeProgram, setActiveProgram] = useState(null);
-  const [sectionRef, inView] = useInView();
 
   // Close modal on Escape
   React.useEffect(() => {
@@ -279,9 +278,9 @@ export default function Programs() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header */}
           <motion.div
-            ref={sectionRef}
             initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7 }}
             className="text-center max-w-2xl mx-auto mb-14"
           >
