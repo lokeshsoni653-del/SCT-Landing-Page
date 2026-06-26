@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  GraduationCap, Facebook, Linkedin, Instagram,
-  Youtube, ArrowRight, Heart, MapPin, Mail
+  GraduationCap, ExternalLink, Globe,
+  ArrowRight, Heart, MapPin, Mail
 } from 'lucide-react';
 
 const NAV_SECTIONS = [
@@ -40,19 +40,19 @@ const NAV_SECTIONS = [
 
 const SOCIALS = [
   {
-    icon: Facebook,
+    icon: Globe,
     label: 'Facebook',
     url: 'https://www.facebook.com/profile.php?id=61560333105325',
     color: '#1877f2',
   },
   {
-    icon: Instagram,
+    icon: ExternalLink,
     label: 'Instagram',
     url: 'https://www.instagram.com/thar_students_club/',
     color: '#e1306c',
   },
   {
-    icon: Linkedin,
+    icon: ExternalLink,
     label: 'LinkedIn',
     url: 'https://www.linkedin.com/company/studentsclubtharparkar/',
     color: '#0a66c2',
