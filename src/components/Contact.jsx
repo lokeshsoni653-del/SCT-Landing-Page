@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  Mail, Phone, MapPin, Facebook, Linkedin,
-  Instagram, Youtube, Send, CheckCircle,
-  MessageSquare, Clock, ArrowRight
+  Mail, Phone, MapPin, ExternalLink,
+  Send, CheckCircle,
+  MessageSquare, Clock, ArrowRight, Globe
 } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 
 const SOCIAL_LINKS = [
   {
-    icon: Facebook,
+    icon: Globe,
     label: 'Facebook',
     handle: 'Students Club Tharparkar',
     url: 'https://www.facebook.com/profile.php?id=61560333105325',
@@ -17,7 +17,7 @@ const SOCIAL_LINKS = [
     bg:    '#1877f215',
   },
   {
-    icon: Instagram,
+    icon: ExternalLink,
     label: 'Instagram',
     handle: '@thar_students_club',
     url: 'https://www.instagram.com/thar_students_club/',
@@ -25,7 +25,7 @@ const SOCIAL_LINKS = [
     bg:    '#e1306c15',
   },
   {
-    icon: Linkedin,
+    icon: ExternalLink,
     label: 'LinkedIn',
     handle: 'studentsclubtharparkar',
     url: 'https://www.linkedin.com/company/studentsclubtharparkar/',
