@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import {
   Users, BookOpen, Globe, Heart,
   ArrowRight, ChevronDown, Sparkles
 } from 'lucide-react';
-import CountUp from 'react-countup';
-import { useInView } from '../hooks/useInView';
 
 /* ─── Animated Particles ─── */
 const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
@@ -33,6 +31,47 @@ function Particle({ size, x, y, delay, duration }) {
       }}
     />
   );
+}
+
+/* ─── Custom CountUp Component (React 19 Safe) ─── */
+function CountUp({ end, duration = 2.5, suffix = '', separator = ',' }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp = null;
+    const startValue = 0;
+    const endValue = parseInt(end, 10);
+    if (isNaN(endValue)) return;
+
+    let animationFrameId;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
+      const currentCount = Math.floor(progress * (endValue - startValue) + startValue);
+      setCount(currentCount);
+
+      if (progress < 1) {
+        animationFrameId = window.requestAnimationFrame(step);
+      } else {
+        setCount(endValue);
+      }
+    };
+
+    animationFrameId = window.requestAnimationFrame(step);
+
+    return () => {
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [end, duration]);
+
+  const formatNumber = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+  };
+
+  return <>{formatNumber(count)}{suffix}</>;
 }
 
 /* ─── Stats Data ─── */
@@ -79,7 +118,8 @@ function FloatingOrb({ className, delay = 0 }) {
 }
 
 export default function Hero() {
-  const [statsRef, statsInView] = useInView({ threshold: 0.3 });
+  const statsRef = useRef(null);
+  const statsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
   return (
     <section
