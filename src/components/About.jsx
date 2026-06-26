@@ -4,7 +4,7 @@ import {
   Target, Eye, Compass, MapPin,
   Users, BookOpen, TrendingUp, Heart
 } from 'lucide-react';
-import { useInView } from '../hooks/useInView';
+
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 40 },
@@ -30,7 +30,6 @@ const HIGHLIGHTS = [
 ];
 
 export default function About() {
-  const [ref, inView] = useInView();
 
   return (
     <section
@@ -44,9 +43,9 @@ export default function About() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          ref={ref}
           initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
           variants={stagger}
           className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
         >
