@@ -89,7 +89,7 @@ function BenefitCard({ icon: Icon, color, title, desc, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.07, ease: [0.4, 0, 0.2, 1] }}
-      className="group relative bg-white border border-slate-100 rounded-2xl p-6 card-hover shadow-sm overflow-hidden"
+      className="group relative glass-card rounded-2xl p-6 card-hover overflow-hidden"
       role="article"
     >
       {/* Subtle gradient on hover */}
@@ -106,8 +106,8 @@ function BenefitCard({ icon: Icon, color, title, desc, index }) {
         <Icon size={22} style={{ color }} aria-hidden="true" />
       </div>
 
-      <h3 className="font-display font-bold text-navy-900 text-lg mb-2">{title}</h3>
-      <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
+      <h3 className="font-display font-bold text-white text-lg mb-2">{title}</h3>
+      <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
 
       {/* Bottom accent bar */}
       <div
@@ -126,12 +126,12 @@ function TestimonialCard({ name, role, quote, avatar, color, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-navy-900/5 border border-navy-900/8 rounded-2xl p-6 relative"
+      className="glass-card rounded-2xl p-6 relative"
       role="article"
       aria-label={`Testimonial from ${name}`}
     >
       {/* Quote mark */}
-      <div aria-hidden="true" className="absolute top-4 right-5 text-6xl font-serif text-navy-900/10 leading-none select-none">"</div>
+      <div aria-hidden="true" className="absolute top-4 right-5 text-6xl font-serif text-white/10 leading-none select-none">"</div>
 
       {/* Stars */}
       <div className="flex gap-0.5 mb-3" aria-label="5 star rating">
@@ -140,7 +140,7 @@ function TestimonialCard({ name, role, quote, avatar, color, index }) {
         ))}
       </div>
 
-      <blockquote className="text-navy-900/70 text-sm leading-relaxed mb-4 relative z-10">
+      <blockquote className="text-white/70 text-sm leading-relaxed mb-4 relative z-10">
         "{quote}"
       </blockquote>
 
@@ -153,8 +153,8 @@ function TestimonialCard({ name, role, quote, avatar, color, index }) {
           {avatar}
         </div>
         <div>
-          <p className="font-semibold text-navy-900 text-sm">{name}</p>
-          <p className="text-slate-400 text-xs">{role}</p>
+          <p className="font-semibold text-white text-sm">{name}</p>
+          <p className="text-white/40 text-xs">{role}</p>
         </div>
       </div>
     </motion.div>
@@ -167,11 +167,11 @@ export default function WhyJoin() {
     <section
       id="why-join"
       aria-labelledby="why-join-heading"
-      className="section-padding bg-sct-offWhite relative overflow-hidden"
+      className="section-padding bg-navy-950 relative overflow-hidden"
     >
       {/* Decorative blobs */}
       <div aria-hidden="true" className="absolute top-0 left-0 w-72 h-72 bg-sct-gold/8 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div aria-hidden="true" className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/8 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      <div aria-hidden="true" className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/12 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -189,7 +189,7 @@ export default function WhyJoin() {
           </span>
           <h2
             id="why-join-heading"
-            className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 leading-tight mt-2 mb-4"
+            className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mt-2 mb-4"
           >
             8 Reasons to Join{' '}
             <span
@@ -199,7 +199,7 @@ export default function WhyJoin() {
               SCT Today
             </span>
           </h2>
-          <p className="text-slate-500 text-base lg:text-lg">
+          <p className="text-white/50 text-base lg:text-lg">
             Joining SCT isn't just about attending events — it's about transformation.
             Here's what every member gains:
           </p>
@@ -229,7 +229,7 @@ export default function WhyJoin() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <h3 className="font-display font-bold text-navy-900 text-2xl sm:text-3xl">
+          <h3 className="font-display font-bold text-white text-2xl sm:text-3xl">
             What Our Members Say
           </h3>
         </motion.div>
