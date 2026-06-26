@@ -35,11 +35,11 @@ export default function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="section-padding bg-white relative overflow-hidden"
+      className="section-padding bg-navy-950 relative overflow-hidden"
     >
       {/* Subtle background decoration */}
-      <div aria-hidden="true" className="absolute top-0 right-0 w-96 h-96 bg-sct-gold/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-      <div aria-hidden="true" className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+      <div aria-hidden="true" className="absolute top-0 right-0 w-96 h-96 bg-sct-gold/8 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+      <div aria-hidden="true" className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -61,7 +61,7 @@ export default function About() {
             <motion.h2
               id="about-heading"
               variants={fadeUp}
-              className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 leading-tight mb-6"
+              className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6"
             >
               Who We Are &amp;{' '}
               <span className="relative">
@@ -74,13 +74,13 @@ export default function About() {
               </span>
             </motion.h2>
 
-            <motion.p variants={fadeUp} className="text-slate-600 text-base lg:text-lg leading-relaxed mb-6">
-              <strong className="text-navy-900 font-semibold">Students Club Tharparkar (SCT)</strong> is a
+            <motion.p variants={fadeUp} className="text-white/60 text-base lg:text-lg leading-relaxed mb-6">
+              <strong className="text-white font-semibold">Students Club Tharparkar (SCT)</strong> is a
               student-led non-profit organization based in Mithi, dedicated to unlocking the full potential
               of students across the Tharparkar region.
             </motion.p>
 
-            <motion.p variants={fadeUp} className="text-slate-600 text-base lg:text-lg leading-relaxed mb-8">
+            <motion.p variants={fadeUp} className="text-white/60 text-base lg:text-lg leading-relaxed mb-8">
               We believe every student — regardless of geography or circumstance — deserves access to
               mentorship, skill-building, and a network that propels them forward. Through our 30+ programs
               and 10+ active communities, we are writing a new story for Tharparkar: one of ambition,
@@ -92,10 +92,10 @@ export default function About() {
               {HIGHLIGHTS.map((h) => (
                 <div
                   key={h.label}
-                  className="bg-slate-50 border border-slate-100 rounded-2xl p-4 text-center"
+                  className="glass-card rounded-2xl p-4 text-center"
                 >
-                  <p className="font-display font-bold text-2xl text-navy-900">{h.value}</p>
-                  <p className="text-slate-500 text-sm mt-0.5">{h.label}</p>
+                  <p className="font-display font-bold text-2xl text-white">{h.value}</p>
+                  <p className="text-white/50 text-sm mt-0.5">{h.label}</p>
                 </div>
               ))}
             </motion.div>
@@ -105,7 +105,7 @@ export default function About() {
                 href="#programs"
                 id="about-explore-btn"
                 aria-label="Explore SCT programs"
-                className="inline-flex items-center gap-2 text-navy-900 font-semibold hover:text-sct-goldDark transition-colors group"
+                className="inline-flex items-center gap-2 text-white font-semibold hover:text-sct-gold transition-colors group"
               >
                 Explore Our Programs
                 <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
@@ -122,7 +122,7 @@ export default function About() {
               <motion.div
                 key={pillar.title}
                 variants={fadeUp}
-                className="card-hover rounded-2xl p-5 border border-slate-100 bg-white shadow-sm cursor-default"
+                className="glass-card card-hover rounded-2xl p-5 cursor-default"
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
                 <div
@@ -131,8 +131,8 @@ export default function About() {
                 >
                   <pillar.icon size={20} style={{ color: pillar.color }} aria-hidden="true" />
                 </div>
-                <h3 className="font-display font-bold text-navy-900 text-base mb-1.5">{pillar.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{pillar.desc}</p>
+                <h3 className="font-display font-bold text-white text-base mb-1.5">{pillar.title}</h3>
+                <p className="text-white/50 text-sm leading-relaxed">{pillar.desc}</p>
               </motion.div>
             ))}
 
