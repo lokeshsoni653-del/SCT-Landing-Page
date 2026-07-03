@@ -191,12 +191,12 @@ export default function WhyJoin() {
             id="why-join-heading"
             className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mt-2 mb-4"
           >
-            8 Reasons to Join{' '}
+            Find Yourself at{' '}
             <span
               className="text-transparent bg-clip-text"
               style={{ backgroundImage: 'linear-gradient(135deg, #f5c518, #d4a017)' }}
             >
-              SCT Today
+              SCT
             </span>
           </h2>
           <p className="text-white/50 text-base lg:text-lg">
