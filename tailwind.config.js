@@ -8,17 +8,17 @@ export default {
     extend: {
       colors: {
         navy: {
-          50:  '#e8edf5',
-          100: '#c5d0e6',
-          200: '#9fb0d5',
-          300: '#7890c4',
-          400: '#5a78b8',
-          500: '#3b60ac',
-          600: '#2d4f99',
-          700: '#1e3a7e',
-          800: '#142866',
-          900: '#0a1628',  // primary dark navy
-          950: '#060d1a',
+          50:  '#e8eaf6',
+          100: '#c5cae9',
+          200: '#9fa8da',
+          300: '#7986cb',
+          400: '#5c6bc0',
+          500: '#3f51b5',
+          600: '#3949ab',
+          700: '#303f9f',
+          800: '#283593',
+          900: '#1a237e',  // primary navy blue #1a237e
+          950: '#0d134a',
         },
         gold: {
           50:  '#fffbeb',
@@ -33,9 +33,9 @@ export default {
           900: '#78350f',
         },
         sct: {
-          navy:    '#0a1628',
-          navyMid: '#1a2f5e',
-          navyLight:'#243b6e',
+          navy:    '#1a237e',
+          navyMid: '#283593',
+          navyLight:'#3f51b5',
           gold:    '#f5c518',
           goldDark:'#d4a017',
           white:   '#ffffff',
@@ -45,14 +45,14 @@ export default {
         }
       },
       fontFamily: {
-        sans:    ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Outfit', 'system-ui', 'sans-serif'],
+        sans:    ['Poppins', 'system-ui', 'sans-serif'],
+        display: ['Poppins', 'system-ui', 'sans-serif'],
         mono:    ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {
-        'hero-gradient':    'linear-gradient(135deg, #0a1628 0%, #1a2f5e 50%, #0f2040 100%)',
+        'hero-gradient':    'linear-gradient(135deg, #1a237e 0%, #283593 50%, #0d134a 100%)',
         'gold-gradient':    'linear-gradient(135deg, #f5c518 0%, #d4a017 100%)',
-        'card-gradient':    'linear-gradient(145deg, rgba(26,47,94,0.8) 0%, rgba(10,22,40,0.95) 100%)',
+        'card-gradient':    'linear-gradient(145deg, rgba(40,53,147,0.8) 0%, rgba(26,35,126,0.95) 100%)',
         'section-gradient': 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
       },
       animation: {
