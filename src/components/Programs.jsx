@@ -11,8 +11,8 @@ const PROGRAMS = [
     id: 'tech-bootcamp',
     icon: Code2,
     color: '#60a5fa',
-    bgFrom: '#1e3a5f',
-    bgTo:   '#1a2f5e',
+    bgFrom: '#1a237e',
+    bgTo:   '#283593',
     tag: 'Technology',
     title: 'Tech Bootcamps',
     shortDesc: 'Intensive coding & digital skills workshops for the next generation of developers.',
@@ -20,13 +20,16 @@ const PROGRAMS = [
     duration: '4 Weeks',
     level: 'Beginner–Advanced',
     seats: '30 seats',
+    date: 'July 15, 2026',
+    time: '09:00 AM - 01:00 PM',
+    location: 'SCT IT Lab, Mithi',
   },
   {
     id: 'leadership',
     icon: Trophy,
     color: '#f5c518',
-    bgFrom: '#3d2c0a',
-    bgTo:   '#2a1e06',
+    bgFrom: '#1a237e',
+    bgTo:   '#283593',
     tag: 'Leadership',
     title: 'Leadership Academy',
     shortDesc: 'Forging tomorrow\'s leaders through workshops, mentorship, and community projects.',
@@ -34,13 +37,16 @@ const PROGRAMS = [
     duration: '3 Months',
     level: 'Intermediate',
     seats: '20 seats',
+    date: 'July 20, 2026',
+    time: '11:00 AM - 02:00 PM',
+    location: 'SCT Mithi Center',
   },
   {
     id: 'public-speaking',
     icon: Mic,
     color: '#34d399',
-    bgFrom: '#0a2e1e',
-    bgTo:   '#062016',
+    bgFrom: '#1a237e',
+    bgTo:   '#283593',
     tag: 'Communication',
     title: 'Public Speaking',
     shortDesc: 'Building confident voices through debate clubs, speech competitions & media training.',
@@ -48,13 +54,16 @@ const PROGRAMS = [
     duration: '6 Weeks',
     level: 'All Levels',
     seats: '25 seats',
+    date: 'July 25, 2026',
+    time: '03:00 PM - 05:00 PM',
+    location: 'Mithi Press Club',
   },
   {
     id: 'career-prep',
     icon: BookMarked,
     color: '#c084fc',
-    bgFrom: '#2e1a3d',
-    bgTo:   '#1e0f2a',
+    bgFrom: '#1a237e',
+    bgTo:   '#283593',
     tag: 'Career',
     title: 'Career Development',
     shortDesc: 'CV building, interview prep, LinkedIn optimization, and industry networking sessions.',
@@ -62,13 +71,16 @@ const PROGRAMS = [
     duration: '2 Months',
     level: 'All Levels',
     seats: '40 seats',
+    date: 'August 01, 2026',
+    time: '10:00 AM - 12:00 PM',
+    location: 'SCT Mithi Center / Zoom',
   },
   {
     id: 'community-service',
     icon: Heart,
     color: '#f87171',
-    bgFrom: '#3d0a0a',
-    bgTo:   '#2a0606',
+    bgFrom: '#1a237e',
+    bgTo:   '#283593',
     tag: 'Social Impact',
     title: 'Community Service',
     shortDesc: 'Driving real change in Tharparkar through clean drives, literacy campaigns & health awareness.',
@@ -76,13 +88,16 @@ const PROGRAMS = [
     duration: 'Ongoing',
     level: 'All Levels',
     seats: 'Unlimited',
+    date: 'August 05, 2026',
+    time: '08:00 AM - 12:00 PM',
+    location: 'Various Villages, Thar',
   },
   {
     id: 'innovation',
     icon: Lightbulb,
     color: '#fb923c',
-    bgFrom: '#3d1a08',
-    bgTo:   '#2a1005',
+    bgFrom: '#1a237e',
+    bgTo:   '#283593',
     tag: 'Innovation',
     title: 'Idea Hackathons',
     shortDesc: '48-hour hackathons challenging students to solve local problems with creative thinking.',
@@ -90,6 +105,9 @@ const PROGRAMS = [
     duration: '48 Hours',
     level: 'All Levels',
     seats: '60 seats',
+    date: 'August 12, 2026',
+    time: '48 Hours Challenge',
+    location: 'SCT Mithi Auditorium',
   },
 ];
 
@@ -146,23 +164,38 @@ function ProgramCard({ program, onClick, index }) {
         </h3>
         <p className="text-white/50 text-sm leading-relaxed mb-5">{program.shortDesc}</p>
 
-        {/* Meta */}
-        <div className="flex flex-wrap gap-2 mb-5">
-          {[program.duration, program.level, program.seats].map((meta) => (
-            <span
-              key={meta}
-              className="px-2.5 py-1 rounded-lg text-xs text-white/60 border border-white/10 bg-white/5"
-            >
-              {meta}
-            </span>
-          ))}
+        {/* Date, Time, Location details */}
+        <div className="space-y-1.5 text-xs text-white/70 mb-5 border-t border-white/5 pt-4">
+          <div className="flex items-center gap-1.5">
+            <span className="text-sct-gold">📅</span>
+            <span>{program.date}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-sct-gold">🕒</span>
+            <span>{program.time}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-sct-gold">📍</span>
+            <span className="truncate">{program.location}</span>
+          </div>
         </div>
 
-        {/* CTA */}
-        <div className="flex items-center gap-2 text-sm font-semibold text-white/60 group-hover:text-sct-gold transition-colors duration-300">
-          <Play size={14} aria-hidden="true" />
-          Learn More
-          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+        {/* CTA Actions */}
+        <div className="flex items-center justify-between border-t border-white/5 pt-4">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-white/50 group-hover:text-white transition-colors">
+            <Play size={12} aria-hidden="true" />
+            Details
+          </div>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onClick(program);
+            }}
+            className="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-sct-gold text-navy-900 shadow-gold hover:scale-105 active:scale-95 transition-all"
+            aria-label={`Register for ${program.title}`}
+          >
+            Register Now
+          </button>
         </div>
       </div>
     </motion.article>
@@ -223,6 +256,25 @@ function ProgramModal({ program, onClose }) {
 
             <p className="text-white/70 leading-relaxed mb-6">{program.fullDesc}</p>
 
+            {/* Date, Time, Location */}
+            <div className="space-y-2.5 text-xs sm:text-sm text-white/80 mb-6 bg-white/5 border border-white/10 rounded-2xl p-4">
+              <div className="flex items-center gap-2">
+                <span>📅</span>
+                <strong>Date:</strong>
+                <span>{program.date}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span>🕒</span>
+                <strong>Time:</strong>
+                <span>{program.time}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span>📍</span>
+                <strong>Location:</strong>
+                <span>{program.location}</span>
+              </div>
+            </div>
+
             <div className="grid grid-cols-3 gap-3 mb-6">
               {[['⏱', program.duration, 'Duration'], ['📊', program.level, 'Level'], ['🎯', program.seats, 'Capacity']].map(([emoji, val, lbl]) => (
                 <div key={lbl} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
@@ -237,9 +289,9 @@ function ProgramModal({ program, onClose }) {
               href="#contact"
               onClick={onClose}
               className="btn-primary w-full justify-center text-center"
-              aria-label={`Apply for ${program.title}`}
+              aria-label={`Register for ${program.title}`}
             >
-              Apply Now
+              Register Now
               <ArrowRight size={16} aria-hidden="true" />
             </a>
           </div>
@@ -249,6 +301,7 @@ function ProgramModal({ program, onClose }) {
   );
 }
 
+/* ─── Upcoming Events & Programs Section ─── */
 export default function Programs() {
   const [activeProgram, setActiveProgram] = useState(null);
 
@@ -286,19 +339,19 @@ export default function Programs() {
           >
             <span className="section-badge">
               <Trophy size={13} aria-hidden="true" />
-              Our Programs
+              SCT Events &amp; Programs
             </span>
             <h2 id="programs-heading" className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mt-2 mb-4">
-              Programs That{' '}
+              Upcoming Events &amp;{' '}
               <span
                 className="text-transparent bg-clip-text"
                 style={{ backgroundImage: 'linear-gradient(135deg, #f5c518, #d4a017)' }}
               >
-                Transform
+                Programs
               </span>
             </h2>
             <p className="text-white/50 text-base lg:text-lg">
-              From tech to leadership, every program is designed to ignite your potential and open doors you never imagined.
+              Join our latest bootcamps and upcoming cohorts designed to accelerate your skills and foster leadership.
             </p>
           </motion.div>
 
