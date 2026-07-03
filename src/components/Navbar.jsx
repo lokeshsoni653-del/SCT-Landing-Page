@@ -7,8 +7,10 @@ import {
 const NAV_LINKS = [
   { label: 'Home',      href: '#hero' },
   { label: 'About',     href: '#about' },
+  { label: 'Impact',    href: '#impact-numbers' },
+  { label: 'Gallery',   href: '#gallery' },
   { label: 'Programs',  href: '#programs' },
-  { label: 'Why Join',  href: '#why-join' },
+  { label: 'Team',      href: '#team' },
   { label: 'Contact',   href: '#contact' },
 ];
 
