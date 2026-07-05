@@ -11,8 +11,8 @@
       --color-navy-light: #283593;
       --color-gold: #f5c518;
       --color-gold-dark: #d4a017;
-      --color-slate: #64748b;
-      --color-border: #e2e8f0;
+      --color-slate: #475569;
+      --color-border: #cbd5e1;
       --font-family: 'Poppins', sans-serif;
     }
 
@@ -24,83 +24,55 @@
 
     body {
       font-family: var(--font-family);
-      background-color: #f1f5f9;
-      color: #334155;
-      line-height: 1.5;
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      padding: 2cm 0;
     }
 
-    /* Print styling container */
-    .document-container {
+    .document-wrapper {
       max-width: 21cm;
       margin: 0 auto;
+      background: white;
+      padding: 2.5cm 2cm;
+      box-shadow: 0 4px 30px rgba(26, 35, 126, 0.08);
+      border-radius: 8px;
     }
 
-    /* Page Definition (A4) */
-    .page {
-      width: 21cm;
-      height: 29.7cm;
-      padding: 1.8cm 2cm;
-      background: white;
-      margin: 1cm auto;
-      box-shadow: 0 4px 20px rgba(26, 35, 126, 0.1);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      page-break-after: always;
+    /* Print styling rules */
+    @page {
+      size: A4;
+      margin: 2cm;
     }
 
     @media print {
       body {
         background-color: white;
+        padding: 0;
       }
-      .page {
-        margin: 0;
+      .document-wrapper {
+        max-width: 100%;
+        padding: 0;
         box-shadow: none;
-        page-break-after: always;
-        height: 29.7cm;
-        width: 21cm;
+        border-radius: 0;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      h1, h2, h3 {
+        page-break-after: avoid;
+      }
+      .card, .screenshot-container, tr, pre {
+        page-break-inside: avoid;
       }
     }
 
-    /* Header & Footer on each page */
-    .page-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1.5px solid var(--color-border);
-      padding-bottom: 0.3cm;
-      margin-bottom: 0.6cm;
-    }
-
-    .page-header .brand {
-      font-weight: 700;
-      font-size: 13px;
-      color: var(--color-navy);
-      letter-spacing: -0.01em;
-    }
-
-    .page-header .doc-title {
-      font-size: 11px;
-      color: var(--color-slate);
-      font-weight: 500;
-    }
-
-    .page-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1.5px solid var(--color-border);
-      padding-top: 0.3cm;
-      margin-top: auto;
-      font-size: 11px;
-      color: var(--color-slate);
-    }
-
-    .page-footer .student-info {
-      font-weight: 500;
+    /* Header & Footer on each page when printed naturally */
+    .section-divider {
+      border-bottom: 2px solid var(--color-navy);
+      margin: 25px 0 15px 0;
+      padding-bottom: 5px;
     }
 
     /* Content Typography */
@@ -109,15 +81,38 @@
       letter-spacing: -0.02em;
     }
 
-    h1 { font-size: 26px; font-weight: 800; line-height: 1.2; }
-    h2 { font-size: 20px; font-weight: 700; border-left: 4px solid var(--color-gold); padding-left: 10px; margin-bottom: 14px; margin-top: 10px; }
-    h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-navy);
+      border-left: 5px solid var(--color-gold);
+      padding-left: 12px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      page-break-inside: avoid;
+    }
+
+    h3 {
+      font-size: 15.5px;
+      font-weight: 600;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      color: var(--color-navy-light);
+    }
 
     p {
       font-size: 13.5px;
-      color: #475569;
-      margin-bottom: 12px;
-      line-height: 1.6;
+      color: var(--color-slate);
+      margin-bottom: 14px;
+      text-align: justify;
     }
 
     strong {
@@ -126,110 +121,111 @@
     }
 
     ul, ol {
-      margin-left: 20px;
-      margin-bottom: 12px;
+      margin-left: 24px;
+      margin-bottom: 14px;
       font-size: 13.5px;
-      color: #475569;
+      color: var(--color-slate);
     }
 
     li {
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
-    /* ─── Cover Page Styles ─── */
-    .cover-page {
-      background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-      color: white;
-      justify-content: center;
+    /* Cover Page Styles */
+    .cover-container {
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 3cm 2.5cm;
+      min-height: 24cm;
+      padding: 1.5cm 0;
+      page-break-after: always;
     }
 
     .cover-logo {
-      width: 75px;
-      height: 75px;
+      width: 80px;
+      height: 80px;
       background: var(--color-gold);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 35px;
-      box-shadow: 0 0 30px rgba(245, 197, 24, 0.4);
+      margin-bottom: 40px;
+      box-shadow: 0 0 25px rgba(245, 197, 24, 0.35);
     }
 
     .cover-logo svg {
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       fill: var(--color-navy);
     }
 
     .cover-title {
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 900;
-      color: white;
-      line-height: 1.2;
-      margin-bottom: 10px;
+      color: var(--color-navy);
+      line-height: 1.25;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
     }
 
     .cover-subtitle {
       font-size: 16px;
-      color: var(--color-gold);
-      font-weight: 600;
+      color: var(--color-slate);
+      font-weight: 500;
+      margin-bottom: 80px;
       letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 60px;
     }
 
-    .cover-meta {
+    .cover-meta-grid {
       width: 100%;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      padding-top: 30px;
+      border-top: 2px solid var(--color-navy);
+      padding-top: 40px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 25px;
+      gap: 30px;
       text-align: left;
     }
 
-    .meta-item label {
+    .meta-box label {
       display: block;
       font-size: 11px;
-      color: rgba(255, 255, 255, 0.5);
+      color: var(--color-text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
-    .meta-item value {
+    .meta-box span {
       display: block;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
-      color: white;
+      color: var(--color-navy);
     }
 
-    .meta-item a {
-      color: var(--color-gold);
-      text-decoration: none;
-      font-weight: 600;
+    .meta-box a {
+      color: var(--color-navy-light);
+      text-decoration: underline;
     }
 
-    /* Card styling */
+    /* Cards & Containers */
     .card {
       background: #f8fafc;
       border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
     }
 
     .screenshot-container {
       width: 100%;
-      border: 1.5px solid var(--color-navy);
-      border-radius: 8px;
+      border: 1px solid var(--color-navy);
+      border-radius: 6px;
       overflow: hidden;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 10px rgba(26, 35, 126, 0.05);
-      background: var(--color-navy);
+      margin: 15px 0;
+      background: var(--color-navy-light);
     }
 
     .screenshot-container img {
@@ -241,29 +237,29 @@
     .screenshot-caption {
       background: var(--color-navy);
       color: white;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
-      padding: 6px 10px;
+      padding: 8px 12px;
       text-align: center;
     }
 
-    .color-block {
+    .color-swatch {
       display: inline-block;
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      margin-right: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      margin-right: 8px;
       vertical-align: middle;
       border: 1px solid var(--color-border);
     }
 
-    .badge {
+    .badge-pill {
       display: inline-block;
-      padding: 3px 8px;
-      border-radius: 4px;
+      padding: 3px 10px;
+      border-radius: 15px;
       font-size: 11px;
       font-weight: 600;
-      background: rgba(26, 35, 126, 0.08);
+      background: rgba(26, 35, 126, 0.07);
       color: var(--color-navy);
       border: 1px solid rgba(26, 35, 126, 0.15);
       margin-right: 6px;
@@ -273,10 +269,10 @@
 </head>
 <body>
 
-<div class="document-container">
+<div class="document-wrapper">
 
-  <!-- ==================== PAGE 1: COVER PAGE ==================== -->
-  <div class="page cover-page">
+  <!-- ==================== COVER PAGE ==================== -->
+  <div class="cover-container">
     <div class="cover-logo">
       <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
@@ -284,572 +280,443 @@
       </svg>
     </div>
     <div class="cover-title">Website Documentation &amp;<br>UI/UX Improvement Report</div>
-    <div class="cover-subtitle">Students Club Tharparkar (SCT) Landing Page</div>
+    <div class="cover-subtitle">Technical Development Report for Students Club Tharparkar (SCT)</div>
     
-    <div style="margin-top: auto; width: 100%;">
-      <div class="cover-meta">
-        <div class="meta-item">
-          <label>Submitted By</label>
-          <value>Lokesh Kumar</value>
-        </div>
-        <div class="meta-item">
-          <label>Department</label>
-          <value>Web Development Department</value>
-        </div>
-        <div class="meta-item">
-          <label>Internship Program</label>
-          <value>SCT Summer Internship 2026</value>
-        </div>
-        <div class="meta-item">
-          <label>Submission Date</label>
-          <value>July 3, 2026</value>
-        </div>
-        <div class="meta-item">
-          <label>Live Website</label>
-          <value><a href="https://sct-landing-page.vercel.app/" target="_blank">sct-landing-page.vercel.app</a></value>
-        </div>
-        <div class="meta-item">
-          <label>GitHub Repository</label>
-          <value><a href="https://github.com/lokeshsoni653-del/sct-landing-page" target="_blank">sct-landing-page/lokesh</a></value>
-        </div>
+    <div class="cover-meta-grid">
+      <div class="meta-box">
+        <label>Project Title</label>
+        <span>SCT Landing Page Redesign</span>
+      </div>
+      <div class="meta-box">
+        <label>Submitted By</label>
+        <span>Lokesh Kumar (Intern)</span>
+      </div>
+      <div class="meta-box">
+        <label>Department</label>
+        <span>Web Development Department</span>
+      </div>
+      <div class="meta-box">
+        <label>Internship Program</label>
+        <span>SCT Summer Internship Program 2026</span>
+      </div>
+      <div class="meta-box">
+        <label>Submission Date</label>
+        <span>July 5, 2026</span>
+      </div>
+      <div class="meta-box">
+        <label>Live URL</label>
+        <span><a href="https://sct-landing-page.vercel.app/" target="_blank">sct-landing-page.vercel.app</a></span>
       </div>
     </div>
   </div>
 
 
-  <!-- ==================== PAGE 2: TABLE OF CONTENTS ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">Website Documentation Report</span>
-    </div>
+  <!-- ==================== TABLE OF CONTENTS ==================== -->
+  <div class="page-break">
+    <h2 style="margin-top: 0;">Table of Contents</h2>
+    <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 20px 0 35px 0; color: var(--color-slate);">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--color-navy); height: 40px; text-align: left;">
+          <th style="color: var(--color-navy); font-weight: 700; width: 85%;">Section Title</th>
+          <th style="color: var(--color-navy); font-weight: 700; text-align: right; width: 15%;">Page Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
+          <td><strong>1. Project Introduction</strong></td>
+          <td style="text-align: right; font-weight: 600; color: var(--color-navy);">Page 3</td>
+        </tr>
+        <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
+          <td><strong>2. Project Scope</strong></td>
+          <td style="text-align: right; font-weight: 600; color: var(--color-navy);">Page 4</td>
+        </tr>
+        <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
+          <td><strong>3. Technologies Used</strong></td>
+          <td style="text-align: right; font-weight: 600; color: var(--color-navy);">Page 5</td>
+        </tr>
+        <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
+          <td><strong>4. Website Structure</strong></td>
+          <td style="text-align: right; font-weight: 600; color: var(--color-navy);">Page 6</td>
+        </tr>
+        <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
+          <td><strong>5. UI/UX Design</strong></td>
+          <td style="text-align: right; font-weight: 600; color: var(--color-navy);">Page 7</td>
+        </tr>
+        <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
+          <td><strong>6. Visual Showcase &amp; Screenshots</strong></td>
+          <td style="text-align: right; font-weight: 600; color: var(--color-navy);">Pages 8-10</td>
+        </tr>
+        <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
+          <td><strong>7. Challenges Faced &amp; Solutions</strong></td>
+          <td style="text-align: right; font-weight: 600; color: var(--color-navy);">Page 11</td>
+        </tr>
+        <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
+          <td><strong>8. Future Improvements &amp; Conclusion</strong></td>
+          <td style="text-align: right; font-weight: 600; color: var(--color-navy);">Page 12</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 15px;">Executive Summary</h3>
+    <p>
+      This Website Documentation and UI/UX Improvement Report presents the comprehensive redesign and technical migration of the official landing page of the <strong>Students Club Tharparkar (SCT)</strong>. SCT is a prominent, student-led non-profit network focused on empowering rural student leaders, bridging digital literacy gaps, and offering academic/technical bootcamps in the Tharparkar region.
+    </p>
+    <p>
+      In response to technical challenges (including rendering lag, assets load blocks, and file locking), the platform was migrated from a React+Vite package base into a highly optimized, custom programmed **static site structure** containing only <code>index.html</code>, <code>style.css</code>, and <code>app.js</code>. By adopting a strict Navy Blue (`#1a237e`) branding theme and **Poppins** typography, the interface delivers a clean and professional look. This document details the engineering paradigms, layouts, and optimization steps utilized.
+    </p>
+  </div>
+
+
+  <!-- ==================== SECTION 1: PROJECT INTRODUCTION ==================== -->
+  <div class="page-break">
+    <h2>1. Project Introduction</h2>
     
-    <div>
-      <h2 style="margin-top: 10px; margin-bottom: 20px;">Table of Contents</h2>
-      <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 10px; color: #475569;">
-        <thead>
-          <tr style="border-bottom: 2px solid var(--color-navy); height: 40px;">
-            <th style="text-align: left; font-weight: 700; color: var(--color-navy);">Section Title</th>
-            <th style="text-align: right; font-weight: 700; color: var(--color-navy);">Page Number</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>Executive Summary &amp; Table of Contents</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">2</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>1. Project Introduction</strong> (Purpose, Problem Statement, Objectives, Target Audience)</td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">3</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>2. Project Scope &amp; Organizational Benefits</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">4</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>3. Technologies Used &amp; Code Architecture</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">5</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>4. Website Structure &amp; Navigation Elements</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">6</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>5. UI/UX Design Philosophy &amp; Improvement Systems</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">7</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>6. Visual Showcase &amp; Section Layouts (Part 1)</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">8</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>7. Visual Showcase &amp; Section Layouts (Part 2)</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">9</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>8. Visual Showcase &amp; Section Layouts (Part 3)</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">10</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>9. Challenges Faced &amp; Code Resolutions</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">11</td>
-          </tr>
-          <tr style="border-bottom: 1px dashed var(--color-border); height: 35px;">
-            <td><strong>10. Future Improvements &amp; Project Conclusion</strong></td>
-            <td style="text-align: right; font-weight: 600; color: var(--color-navy);">12</td>
-          </tr>
-        </tbody>
-      </table>
+    <h3>1.1 Purpose of the Website</h3>
+    <p>
+      The Students Club Tharparkar (SCT) landing page serves as a centralized digital gateway to connect rural students in Sindh with technical training, public speaking seminars, and leadership workshops. Operating in a remote desert district where resources are scarce, the club requires a high-performance, low-latency online portal. This site facilitates cohort onboarding, outlines calendar schedules, lists outreach achievements, and coordinates donations to fund internet workspaces and tech logistics.
+    </p>
 
-      <h2 style="margin-top: 35px;">Executive Summary</h2>
-      <p style="margin-top: 5px;">
-        This document serves as the formal project documentation and UI/UX analysis for the updated <strong>Students Club Tharparkar (SCT)</strong> landing page. SCT is a registered non-profit student network whose core mission is to empower rural student leadership, bridge digital divides, and bring quality educational bootcamps directly to rural Sindh, Pakistan.
-      </p>
-      <p>
-        The landing page has been fully refactored to align with brand guidelines requiring a Navy Blue (`#1a237e`) and White scheme, backed by the elegant <strong>Poppins</strong> typeface. Using modern responsive layouts (Vite + React 19 + Tailwind CSS), this website serves as a high-fidelity portal to drive member onboarding, showcase events, collect donations, and coordinate educational initiatives.
-      </p>
-    </div>
+    <h3>1.2 Problem Statement</h3>
+    <p>
+      Tharparkar students face significant challenges due to geographic isolation and limited access to technical counseling. While SCT actively addresses these issues, its digital outreach was hampered by several factors:
+    </p>
+    <ul>
+      <li><strong>Lack of Structured Portals:</strong> DESERT youth lacked a single page to view active classes, class venues, and register for courses.</li>
+      <li><strong>Brand Inconsistency:</strong> Early visual formats lacked clear color cohesion, diminishing brand authority.</li>
+      <li><strong>Bandwidth Constraints:</strong> Large dependencies caused layout rendering locks on slow rural internet pipelines.</li>
+    </ul>
 
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 2</span>
+    <h3>1.3 Project Objectives</h3>
+    <p>
+      To resolve these challenges, the platform was rewritten with the following objectives:
+    </p>
+    <ol>
+      <li><strong>Brand Alignment:</strong> Deploy the Navy Blue and White scheme with Poppins font parameters.</li>
+      <li><strong>Interaction Fluidity:</strong> Implement native vanilla JS script listeners to drive animations, count-up stats, and popup overlays.</li>
+      <li><strong>Clean Mobile Layout:</strong> Optimize column-breaks to support responsive adjustments on entry-level mobile screens.</li>
+      <li><strong>Lightweight Footprint:</strong> Eliminate heavy bundlers and third-party frameworks to ensure loading speed.</li>
+    </ol>
+
+    <h3>1.4 Target Audience</h3>
+    <p>
+      The landing page targets high school and college students seeking digital training, potential volunteers looking to teach or facilitate, regional partner NGOs sponsoring training campaigns, and global donors contributing to tech funds.
+    </p>
+  </div>
+
+
+  <!-- ==================== SECTION 2: PROJECT SCOPE ==================== -->
+  <div class="page-break">
+    <h2>2. Project Scope</h2>
+    
+    <h3>2.1 Included Features</h3>
+    <p>
+      The landing page contains a complete set of features designed to maximize user engagement and onboarding:
+    </p>
+    <ul>
+      <li><strong>Sticky Navbar:</strong> Backed by backdrop-filter blurs, keeping the main menu visible while scrolling.</li>
+      <li><strong>Dynamic Hero:</strong> Displays SCT's core value statement along with a call-to-action to explore programs.</li>
+      <li><strong>Donate Banner:</strong> Provides bank transfer details with an interactive click-to-copy utility.</li>
+      <li><strong>About Us:</strong> Explains SCT’s mission, vision, and core pillars (Education, Leadership, Welfare).</li>
+      <li><strong>Sponsors &amp; Partners Grid:</strong> Displays logos of supporting regional organizations.</li>
+      <li><strong>Impact Numbers:</strong> Renders interactive numbers that count up as the user scrolls into the section.</li>
+      <li><strong>Find Yourself Benefit Grid:</strong> Details membership advantages with custom hover-glowing cards.</li>
+      <li><strong>Photo Gallery:</strong> Showcase of workshops, clean drives, and literacy campaigns, supporting tag filters (All, Events, Workshops, Activities).</li>
+      <li><strong>Upcoming Programs &amp; Register:</strong> Shows active schedules, including capacities, locations, and direct registration triggers.</li>
+      <li><strong>Meet Our Team:</strong> Team grid showcasing leadership profiles and social anchors.</li>
+      <li><strong>Controlled Contact Form:</strong> Controlled inputs with field validation, dynamic error alerts, and accessible contrast drop-down options.</li>
+    </ul>
+
+    <h3>2.2 Benefits to Students Club Tharparkar</h3>
+    <p>
+      The landing page provides direct organizational value:
+    </p>
+    <div class="card">
+      <p style="margin-bottom: 0; font-size: 13px;">
+        <strong>1. Streamlined Registration:</strong> Students can register for upcoming classes (like WordPress or Public Speaking) directly through the integrated modal admission portal, reducing manual entry errors.<br><br>
+        <strong>2. Increased Trust:</strong> Publicly listing impact metrics and banking details builds transparency, encouraging more donations.<br><br>
+        <strong>3. Professional Brand Placement:</strong> A cohesive visual design positions SCT as a professional organization, attracting university partners and corporate sponsors.
+      </p>
     </div>
   </div>
 
 
-  <!-- ==================== PAGE 3: PROJECT INTRODUCTION ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">1. Project Introduction</span>
-    </div>
+  <!-- ==================== SECTION 3: TECHNOLOGIES USED ==================== -->
+  <div class="page-break">
+    <h2>3. Technologies Used</h2>
     
-    <div>
-      <h2>1. Project Introduction</h2>
-      
-      <h3 style="margin-top: 15px;">1.1 Purpose of the Website</h3>
-      <p>
-        The primary purpose of the SCT Landing Page is to serve as the unified digital hub for the organization. As a non-profit operating in a rural and digitally developing district, SCT requires a lightweight, highly responsive, and visually striking platform to share its activities, manage student cohorts, coordinate volunteer initiatives, and receive donor support. The site bridges the digital divide by displaying critical notifications, training programs, and community achievements.
-      </p>
+    <h3>3.1 Technology Selection &amp; Rationale</h3>
+    <p>
+      To deliver a lightweight, high-performance solution, we opted for a vanilla static stack, avoiding heavy dependencies:
+    </p>
+    <ul>
+      <li><strong>HTML5:</strong> Provides semantic, accessible page structures.</li>
+      <li><strong>CSS3:</strong> Manages layout and styling, including CSS variables, Flexbox, CSS Grid, and custom transitions.</li>
+      <li><strong>JavaScript (ES6):</strong> Powers all interactivity, scroll tracking, count-up animations, filtering logic, modal states, clipboard copy tasks, and form validations.</li>
+    </ul>
 
-      <h3 style="margin-top: 15px;">1.2 Problem Statement</h3>
-      <p>
-        Students and youth in the Tharparkar region face significant barriers to quality digital skills training, guidance counseling, and career mentorship due to geographical isolation. Organizations like SCT work locally, but lacked a centralized, high-performance website that could:
-      </p>
-      <ul>
-        <li>Provide transparent data on their impact, programs, and outreach achievements.</li>
-        <li>Offer clean, accessible registration channels for bootcamps and workshops.</li>
-        <li>Present a professional interface to capture donations and regional partner sponsorships.</li>
-        <li>Maintain absolute performance on low-bandwidth networks common in rural villages.</li>
-      </ul>
+    <h3>3.2 Architecture Comparison</h3>
+    <p>
+      Migrating from React + Vite + Tailwind to a static stack significantly reduced complexity:
+    </p>
+    <table style="width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 15px 0; border: 1px solid var(--color-border);">
+      <thead>
+        <tr style="background-color: var(--color-primary); color: white; height: 35px; text-align: left;">
+          <th style="padding: 8px; border: 1px solid var(--color-border);">Feature</th>
+          <th style="padding: 8px; border: 1px solid var(--color-border);">React Dev Stack</th>
+          <th style="padding: 8px; border: 1px solid var(--color-border);">Static Stack</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="height: 30px;">
+          <td style="padding: 8px; border: 1px solid var(--color-border);"><strong>Total File Count</strong></td>
+          <td style="padding: 8px; border: 1px solid var(--color-border);">15,000+ files (node_modules)</td>
+          <td style="padding: 8px; border: 1px solid var(--color-border);"><strong>3 Core Files</strong> (HTML, CSS, JS)</td>
+        </tr>
+        <tr style="height: 30px;">
+          <td style="padding: 8px; border: 1px solid var(--color-border);"><strong>Asset Size (JS/CSS)</strong></td>
+          <td style="padding: 8px; border: 1px solid var(--color-border);">439.1 kB (Uncompressed)</td>
+          <td style="padding: 8px; border: 1px solid var(--color-border);"><strong>45.3 kB</strong> (90% reduction!)</td>
+        </tr>
+        <tr style="height: 30px;">
+          <td style="padding: 8px; border: 1px solid var(--color-border);"><strong>Build Requirements</strong></td>
+          <td style="padding: 8px; border: 1px solid var(--color-border);">Vite compiler build phase</td>
+          <td style="padding: 8px; border: 1px solid var(--color-border);"><strong>None</strong> (Instant Browser Render)</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h3 style="margin-top: 15px;">1.3 Project Objectives</h3>
-      <p>
-        The development of this platform was directed by four central objectives:
-      </p>
-      <ol>
-        <li><strong>Brand Standardization:</strong> Align the visual language of SCT with its identity using a professional navy and white palette.</li>
-        <li><strong>High Onboarding Conversion:</strong> Provide a smooth, client-side validated contact and application portal for student programs.</li>
-        <li><strong>Interactive UX:</strong> Integrate lightweight, smooth animations that work natively across hardware without performance degradation.</li>
-        <li><strong>Accessibility (A11y):</strong> Enforce strict color contrast, semantic HTML, and accessibility attributes.</li>
-      </ol>
+    <h3>3.3 File System Structure</h3>
+    <p>
+      The project structure is clean and modular:
+    </p>
+    <pre style="font-family: monospace; font-size: 12px; background: #f1f5f9; color: var(--color-primary-dark); padding: 12px; border-radius: 6px; border: 1px solid var(--color-border); margin-bottom: 15px;">
+TSC_Internship/
+├── index.html        # Single HTML entrypoint file
+├── style.css         # Consolidated style definitions
+├── app.js            # Visual actions & form logic
+└── media__17824...   # Screenshot visual assets</pre>
+  </div>
 
-      <h3 style="margin-top: 15px;">1.4 Target Audience</h3>
-      <p>
-        The target audience consists of students seeking counseling, digital training, and youth leadership initiatives, local and global donors wishing to support educational equity, regional partners (NGOs and IT hubs) sponsoring outreach drives, and active/prospective student volunteers.
-      </p>
+
+  <!-- ==================== SECTION 4: WEBSITE STRUCTURE ==================== -->
+  <div class="page-break">
+    <h2>4. Website Structure</h2>
+    
+    <p>
+      The site's structure is organized logically to guide users smoothly toward key conversion points:
+    </p>
+    
+    <h3>4.1 Header &amp; Hero Section</h3>
+    <p>
+      The header stays fixed at the top with a backdrop blur filter for readability. The Hero section makes a strong first impression with Poppins headings, animated background elements, and CTA buttons.
+    </p>
+
+    <h3>4.2 Donate Banner</h3>
+    <p>
+      Placed high on the page, the Donate Banner invites contributions for active tech programs, with copying tools for bank details.
+    </p>
+
+    <h3>4.3 About Us &amp; Our Partners</h3>
+    <p>
+      The About section outlines the core values of SCT through an interactive pillars grid. The Partners section immediately follows, listing regional sponsorships to reinforce community trust.
+    </p>
+
+    <h3>4.4 Impact Numbers &amp; Find Yourself (Features)</h3>
+    <p>
+      Renders statistical counters for beneficiaries, programs, volunteers, and villages. Beneath it, a grid displays membership benefits (Digital Literacy, Public Speaking, Youth Leadership, Community Networking).
+    </p>
+
+    <h3>4.5 Event Photo Gallery, Upcoming Programs, &amp; Team</h3>
+    <p>
+      Features tabbed filtering for photos. Upcoming Programs show details, and a "Register Now" button triggers the modal admission form. The Team section displays leadership profiles.
+    </p>
+
+    <h3>4.6 Contact Form &amp; Footer</h3>
+    <p>
+      The Contact form provides client-side validated fields (Name, Email, Subject, Message) and readable dark options. The Footer maps sitemap columns and social media links.
+    </p>
+  </div>
+
+
+  <!-- ==================== SECTION 5: UI/UX DESIGN ==================== -->
+  <div class="page-break">
+    <h2>5. UI/UX Design</h2>
+    
+    <h3>5.1 Brand Color Palette</h3>
+    <p>
+      The design uses a clean Navy Blue and White color scheme, accented with Gold to highlight interactive elements:
+    </p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+      <div class="card" style="margin-bottom: 0; padding: 10px;">
+        <div class="color-swatch" style="background-color: #1a237e;"></div>
+        <strong>Primary Navy (#1a237e)</strong>
+      </div>
+      <div class="card" style="margin-bottom: 0; padding: 10px;">
+        <div class="color-swatch" style="background-color: #283593;"></div>
+        <strong>Navy Mid (#283593)</strong>
+      </div>
+      <div class="card" style="margin-bottom: 0; padding: 10px;">
+        <div class="color-swatch" style="background-color: #f5c518;"></div>
+        <strong>Accent Gold (#f5c518)</strong>
+      </div>
+      <div class="card" style="margin-bottom: 0; padding: 10px;">
+        <div class="color-swatch" style="background-color: #ffffff;"></div>
+        <strong>White (#ffffff)</strong>
+      </div>
     </div>
 
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 3</span>
+    <h3>5.2 Typography System</h3>
+    <p>
+      We use the **Poppins** typeface to establish a clean, consistent font style across all headings, content copy, forms, and interactive buttons.
+    </p>
+
+    <h3>5.3 Responsiveness &amp; Layout Grid</h3>
+    <p>
+      Using Flexbox and CSS Grid layouts allows columns to wrap cleanly across device screens, using responsive breakpoints:
+    </p>
+    <div>
+      <span class="badge-pill">Mobile Lg (480px)</span>
+      <span class="badge-pill">Tablet (768px)</span>
+      <span class="badge-pill">Laptop (1024px)</span>
+      <span class="badge-pill">Desktop (1200px)</span>
+    </div>
+    <p style="margin-top: 10px;">
+      Cards wrap from a single column on mobile to multi-column rows on desktop, ensuring a seamless user experience.
+    </p>
+
+    <h3>5.4 User Experience (UX) Optimizations</h3>
+    <ul>
+      <li><strong>Click-to-Copy Feedback:</strong> Provides instant visual validation when copying bank details.</li>
+      <li><strong>Registration Modals:</strong> Simplifies signup with an clean pop-up form, keeping the user on the landing page.</li>
+      <li><strong>Controlled Select contrast:</strong> Dropdown option tags use custom styling to ensure readability on all devices.</li>
+    </ul>
+  </div>
+
+
+  <!-- ==================== SECTION 6: SCREENSHOTS 1 ==================== -->
+  <div class="page-break">
+    <h2>6. Visual Showcase (Part 1)</h2>
+    
+    <div class="screenshot-container">
+      <img src="media__1782461997828.png" alt="SCT Hero Section & Navbar Screen" />
+      <div class="screenshot-caption">Figure 6.1: Hero Section featuring custom gradient backgrounds, Poppins headings, and mini-stats.</div>
+    </div>
+
+    <div class="screenshot-container">
+      <img src="media__1782461997718.png" alt="SCT About Us Section Screen" />
+      <div class="screenshot-caption">Figure 6.2: About Us Section showing core pillars, mission values, and split-banner visuals.</div>
+    </div>
+
+    <p style="font-size: 13px; margin-top: 10px;">
+      <strong>Analysis:</strong> The navbar uses a backdrop filter blur to maintain header legibility when scrolling over text. Cards use scale transforms on hover to feel interactive.
+    </p>
+  </div>
+
+
+  <!-- ==================== SECTION 6: SCREENSHOTS 2 ==================== -->
+  <div class="page-break">
+    <h2>6. Visual Showcase (Part 2)</h2>
+    
+    <div class="screenshot-container">
+      <img src="media__1782461997897.png" alt="Find Yourself Feature Layout Screen" />
+      <div class="screenshot-caption">Figure 7.1: Find Yourself section displaying benefit cards with gold icons.</div>
+    </div>
+
+    <div class="screenshot-container">
+      <img src="media__1782461997768.png" alt="Upcoming Programs Grid Screen" />
+      <div class="screenshot-caption">Figure 7.2: Upcoming Programs section detailing course locations and dates.</div>
+    </div>
+
+    <p style="font-size: 13px; margin-top: 10px;">
+      <strong>Analysis:</strong> Hovering over gallery items reveals category overlays with smooth transitions. Program registration is handled locally on page buttons.
+    </p>
+  </div>
+
+
+  <!-- ==================== SECTION 6: SCREENSHOTS 3 ==================== -->
+  <div class="page-break">
+    <h2>6. Visual Showcase (Part 3)</h2>
+    
+    <div class="screenshot-container" style="height: 10.5cm; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      <img src="media__1782462012805.png" alt="SCT Contact Form & Footer Screen" style="width: 100%; object-fit: cover;" />
+    </div>
+    <div class="screenshot-caption" style="margin-top: -5px; margin-bottom: 15px;">Figure 8.1: Controlled Contact form featuring subject dropdowns and structured footer grid.</div>
+
+    <div class="card">
+      <h3>Subject Option Contrast Fix</h3>
+      <p style="font-size: 12.5px; margin-bottom: 0;">
+        The contact form handles input validation, throwing error messages immediately upon submission. To address dropdown visibility issues where standard browser select fields blended into backgrounds, a custom theme class is used on the option tags to ensure readability on mobile and desktop viewports.
+      </p>
     </div>
   </div>
 
 
-  <!-- ==================== PAGE 4: PROJECT SCOPE ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">2. Project Scope</span>
-    </div>
+  <!-- ==================== SECTION 7: CHALLENGES FACED ==================== -->
+  <div class="page-break">
+    <h2>7. Challenges Faced &amp; Solutions</h2>
     
-    <div>
-      <h2>2. Project Scope</h2>
-      
-      <h3 style="margin-top: 15px;">2.1 Included Features</h3>
-      <p>
-        The Landing Page integrates a comprehensive set of features, optimized for maximum frontend speed:
-      </p>
-      <ul>
-        <li><strong>Responsive Navigation Bar:</strong> A sticky navigation bar supporting fluid scroll links, keyboard accessibility, and a mobile hamburger menu.</li>
-        <li><strong>Dynamic Hero Section:</strong> Features custom particles and statistics cards integrated with custom animation frame counters.</li>
-        <li><strong>CTA Donate Banner:</strong> Displays an active summer educational fund campaign, direct copy buttons for banking details, and quick contact anchors.</li>
-        <li><strong>Structured About Us Section:</strong> Explains SCT’s mission, vision, and core pillars (Education, Leadership, Welfare).</li>
-        <li><strong>Sponsor &amp; Partners Grid:</strong> Displays logos of regional sponsors to build community trust.</li>
-        <li><strong>Impact Numbers Counter:</strong> Renders interactive numerical counters for active members, villages covered, and student beneficiaries.</li>
-        <li><strong>Find Yourself Benefit Grid:</strong> Details membership advantages with custom hover-glowing cards.</li>
-        <li><strong>Photo Gallery:</strong> Showcase of workshops, clean drives, and literacy campaigns, supporting tag filters (All, Events, Workshops, Activities).</li>
-        <li><strong>Upcoming Programs &amp; Register:</strong> Shows active schedules, including capacities, locations, and direct registration triggers.</li>
-        <li><strong>Meet Our Team:</strong> Team grid showcasing leadership profiles and social anchors.</li>
-        <li><strong>Controlled Contact Form:</strong> Controlled inputs with field validation, dynamic error alerts, and accessible contrast drop-down options.</li>
-      </ul>
+    <h3>7.1 React 19 CountUp Rendering Exception</h3>
+    <p>
+      <strong>Problem:</strong> Using older libraries for count-up animations crashed in React 19’s concurrent rendering engine, leading to layout shifts on scroll.
+    </p>
+    <p>
+      <strong>Solution:</strong> Rewrote the logic in plain JavaScript using `requestAnimationFrame` with ease-out calculations. This approach resolved the rendering lag and improved performance.
+    </p>
 
-      <h3 style="margin-top: 20px;">2.2 Benefits to Students Club Tharparkar</h3>
-      <div class="card">
-        <p style="font-size: 13px; margin-bottom: 0;">
-          <strong>Enhanced Trust &amp; Transparency:</strong> By listing actual statistics (Impact Numbers) and supporting partners, donors can verify the legitimacy of SCT drives.<br><br>
-          <strong>Efficient Student Admissions:</strong> The upcoming programs listing includes locations and schedules with clear registration CTAs, allowing students to apply easily without having to visit the physical center.<br><br>
-          <strong>Strong Regional Brand Placement:</strong> Moving to a unified Poppins typography and navy blue color scheme establishes SCT as a professional organization, attracting corporate sponsorship and university collaborations.
-        </p>
-      </div>
-    </div>
+    <h3>7.2 Dropdown Input Color contrast Issues</h3>
+    <p>
+      <strong>Problem:</strong> Standard browser select elements inherited transparency, making select options illegible on some mobile browsers.
+    </p>
+    <p>
+      <strong>Solution:</strong> Custom styled the `select option` tags with explicit navy blue background variables, ensuring high contrast and readability on all screens.
+    </p>
 
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 4</span>
-    </div>
+    <h3>7.3 OneDrive Sync Locks during Dev Builds</h3>
+    <p>
+      <strong>Problem:</strong> The local build process hung because OneDrive synced and locked files in the workspace.
+    </p>
+    <p>
+      <strong>Solution:</strong> Created a PowerShell script to build the project in a temporary local folder outside OneDrive, then copied the compiled `dist` directory back.
+    </p>
+
+    <h3>7.4 Local Network Push Failures</h3>
+    <p>
+      <strong>Problem:</strong> Large Git pushes failed due to local network drops.
+    </p>
+    <p>
+      <strong>Solution:</strong> Pushed files individually using custom PowerShell scripts via the GitHub REST API contents endpoint.
+    </p>
   </div>
 
 
-  <!-- ==================== PAGE 5: TECHNOLOGIES USED ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">3. Technologies &amp; Architecture</span>
-    </div>
-    
-    <div>
-      <h2>3. Technologies Used &amp; Architecture</h2>
-      
-      <h3 style="margin-top: 15px;">3.1 Technology Stack Selection</h3>
-      <p>
-        To ensure a fast, robust, and scalable platform, a modern frontend stack was chosen:
-      </p>
-      <ul>
-        <li><strong>HTML5 &amp; CSS3:</strong> Built using semantic structure and modern layout paradigms (CSS Custom Variables, Flexbox, and CSS Grids).</li>
-        <li><strong>JavaScript (ES6+):</strong> Powers the application logic, custom events, and state mutations.</li>
-        <li><strong>React 19 (Core Library):</strong> Utilizes React 19's virtual DOM, concurrent rendering engine, and hooks to handle state transitions.</li>
-        <li><strong>Vite (Bundler &amp; Tooling):</strong> Serves as the compilation engine, enabling hot module replacement (HMR) and optimized Rolldown assets bundling.</li>
-        <li><strong>Tailwind CSS v3.4:</strong> A utility-first CSS framework used to build custom styles. Compiles into a single optimized payload.</li>
-        <li><strong>Framer Motion v12:</strong> Drives advanced layout animations, scroll triggers, and tab swaps using hardware acceleration.</li>
-      </ul>
+  <!-- ==================== SECTION 8: FUTURE IMPROVEMENTS & CONCLUSION ==================== -->
+  <div class="page-break">
+    <h2>8. Future Improvements</h2>
+    <p>
+      We plan to expand the landing page with several new features:
+    </p>
+    <ul>
+      <li><strong>Volunteer Logins:</strong> A student login area to log hours, apply for mentoring, and download certificates.</li>
+      <li><strong>Online Donation Processing:</strong> Integration with Stripe, PayPal, or local mobile wallets (EasyPaisa, JazzCash) to receive donations securely.</li>
+      <li><strong>Events Admin Dashboard:</strong> A simple dashboard allowing coordinators to manage and update events.</li>
+      <li><strong>Outreach News Blog:</strong> A news blog showcasing community outreach activities.</li>
+    </ul>
 
-      <h3 style="margin-top: 20px;">3.2 Directory Hierarchy</h3>
-      <p>
-        The project follows a clean, modular structure, separating visual components from configurations:
-      </p>
-      <pre style="font-family: monospace; font-size: 11px; background: #1a237e; color: #34d399; padding: 12px; border-radius: 8px; overflow-x: auto; margin-bottom: 15px;">
-src/
-├── components/
-│   ├── About.jsx         # Mission, Vision & Pillars Grid
-│   ├── Contact.jsx       # Controlled Form & Brand Links
-│   ├── DonateBanner.jsx  # Call-to-Action Donation Banner
-│   ├── Footer.jsx        # Clean Sitemap Links & Copyrights
-│   ├── Gallery.jsx       # Photo Gallery Grid & Filters
-│   ├── Hero.jsx          # Title & Custom Counter Stats
-│   ├── ImpactNumbers.jsx # Statistics & Accomplishments
-│   ├── Navbar.jsx        # Sticky Navigation Header
-│   ├── Partners.jsx      # Supporting Sponsors Grid
-│   ├── Programs.jsx      # Upcoming Events & Programs
-│   ├── Team.jsx          # Meet Our Team Profiles
-│   └── WhyJoin.jsx       # Find Yourself Feature Grid
-├── App.jsx               # Main layout router
-└── index.css             # CSS Tokens & Custom Animations</pre>
-    </div>
-
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 5</span>
-    </div>
-  </div>
-
-
-  <!-- ==================== PAGE 6: WEBSITE STRUCTURE ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">4. Website Structure</span>
-    </div>
-    
-    <div>
-      <h2>4. Website Structure &amp; Sections</h2>
-      
-      <h3 style="margin-top: 15px;">4.1 Navigation Bar &amp; Header</h3>
-      <p>
-        The navigation bar is sticky, using semi-transparent glassmorphism backdrop blurs. It provides instant access to the core sections. On mobile, it collapses into an accessible slide-out mobile drawer menu.
-      </p>
-
-      <h3 style="margin-top: 10px;">4.2 Hero Section &amp; Donate Banner</h3>
-      <p>
-        The Hero section acts as the primary hook, displaying SCT’s official motto: <em>"Empowering Students, Building Future Leaders"</em>. Placed immediately beneath, the Donate Banner invites contributions for active tech programs, with copying tools for bank details.
-      </p>
-
-      <h3 style="margin-top: 10px;">4.3 About Us &amp; Our Partners</h3>
-      <p>
-        The About section outlines the core values of SCT through an interactive pillars grid. The Partners section immediately follows, listing regional sponsorships to reinforce community ties.
-      </p>
-
-      <h3 style="margin-top: 10px;">4.4 Impact Numbers &amp; Find Yourself (Features)</h3>
-      <p>
-        Displays count-up counters showing outreach metrics. Below this, the "Find Yourself" section provides a features grid outlining benefits (Leadership training, public speaking, networking, digital literacy).
-      </p>
-
-      <h3 style="margin-top: 10px;">4.5 Photo Gallery, Programs, &amp; Meet Our Team</h3>
-      <p>
-        The Gallery features dynamic category filtering. The Upcoming Programs section displays dates, times, locations, and interactive registration triggers. The Team section displays leadership profiles.
-      </p>
-
-      <h3 style="margin-top: 10px;">4.6 Contact Form &amp; Footer</h3>
-      <p>
-        The Contact form provides client-side validated fields (Name, Email, Subject, Message) and readable dark options. The Footer maps sitemap columns and social media links.
+    <h2 style="margin-top: 35px;">9. Conclusion</h2>
+    <p>
+      The Students Club Tharparkar (SCT) landing page combines professional branding with lightweight static delivery. Refactoring the site with the **Poppins** typeface and Navy Blue (`#1a237e`) theme establishes a cohesive brand identity.
+    </p>
+    <p>
+      Moving to a static HTML/CSS/JS architecture eliminated bundler bloat, reducing the asset size by 90% and speeding up page loads on rural networks. Using custom JavaScript instead of third-party React libraries resolved early count-up and file-locking bugs.
+    </p>
+    <div class="card" style="margin-top: 20px; background: rgba(26, 35, 126, 0.04); border: 2px solid var(--color-navy); text-align: center;">
+      <p style="font-weight: 700; font-size: 14px; margin-bottom: 0; color: var(--color-primary-dark);">
+        Static Site Footprint: HTML: 40.2 kB | CSS: 35.9 kB | JS: 9.3 kB
       </p>
     </div>
-
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 6</span>
-    </div>
-  </div>
-
-
-  <!-- ==================== PAGE 7: UI/UX DESIGN ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">5. UI/UX Design System</span>
-    </div>
-    
-    <div>
-      <h2>5. UI/UX Design System</h2>
-      
-      <h3 style="margin-top: 15px;">5.1 Color Theme &amp; Typography</h3>
-      <p>
-        The color palette is built around Navy Blue (`#1a237e`), representing trust and authority, and White, providing maximum readability. Golden accents highlight CTAs and active states:
-      </p>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12.5px; margin-bottom: 12px;">
-        <div class="card" style="margin-bottom: 0; padding: 10px;">
-          <div class="color-block" style="background-color: #1a237e;"></div>
-          <strong>Primary Navy (#1a237e):</strong> Main theme color.
-        </div>
-        <div class="card" style="margin-bottom: 0; padding: 10px;">
-          <div class="color-block" style="background-color: #283593;"></div>
-          <strong>Navy Mid (#283593):</strong> Card layers.
-        </div>
-        <div class="card" style="margin-bottom: 0; padding: 10px;">
-          <div class="color-block" style="background-color: #f5c518;"></div>
-          <strong>Accent Gold (#f5c518):</strong> CTAs &amp; focus indicators.
-        </div>
-        <div class="card" style="margin-bottom: 0; padding: 10px;">
-          <div class="color-block" style="background-color: #ffffff;"></div>
-          <strong>White (#ffffff):</strong> Clean backgrounds and text contrast.
-        </div>
-      </div>
-      <p>
-        The typography uses the <strong>Poppins</strong> typeface. Using Poppins across headers and body copy creates a cohesive font style.
-      </p>
-
-      <h3 style="margin-top: 15px;">5.2 Layout &amp; Responsiveness</h3>
-      <p>
-        The page layout uses dynamic Flexbox wraps and Tailwind CSS grid columns. Standard breakpoints are used:
-      </p>
-      <div style="margin-bottom: 12px;">
-        <span class="badge">xs (375px) Mobile</span>
-        <span class="badge">sm (640px) Mobile Lg</span>
-        <span class="badge">md (768px) Tablet</span>
-        <span class="badge">lg (1024px) Laptop</span>
-        <span class="badge">xl (1280px) Desktop</span>
-      </div>
-      <p>
-        Cards dynamically re-order from single-column on mobile viewports to multi-column rows on desktops. All typography sizing uses clamped values to prevent layout breaks.
-      </p>
-
-      <h3 style="margin-top: 15px;">5.3 User Experience Features</h3>
-      <ul>
-        <li><strong>Micro-animations:</strong> Subtle hover scales, card glows, and active tab transitions guide user focus.</li>
-        <li><strong>A11y Compliance:</strong> All links contain `aria-label` tags, and the contact options use custom CSS colors to ensure contrast.</li>
-        <li><strong>Interactive Modals:</strong> Clicking programs loads detailed modal overlays in the current viewport.</li>
-      </ul>
-    </div>
-
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 7</span>
-    </div>
-  </div>
-
-
-  <!-- ==================== PAGE 8: SCREENSHOTS 1 ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">6. Visual Showcase</span>
-    </div>
-    
-    <div>
-      <h2>6. Visual Showcase (Part 1)</h2>
-      
-      <div class="screenshot-container">
-        <img src="media__1782461997828.png" alt="Hero Section and Navbar">
-        <div class="screenshot-caption">Figure 6.1: Hero Section featuring animated particles, Poppins headers, and count-up stats.</div>
-      </div>
-
-      <div class="screenshot-container" style="margin-top: 15px;">
-        <img src="media__1782461997718.png" alt="About Us Section">
-        <div class="screenshot-caption">Figure 6.2: About Us Section showing values, mission pillars, and active indicators.</div>
-      </div>
-
-      <p style="font-size: 13px; margin-top: 10px;">
-        <strong>Visual Details:</strong> The Navbar uses backing blurs to remain visible over hero gradients. The About Us cards apply custom gradients to highlight pillars.
-      </p>
-    </div>
-
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 8</span>
-    </div>
-  </div>
-
-
-  <!-- ==================== PAGE 9: SCREENSHOTS 2 ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">7. Visual Showcase</span>
-    </div>
-    
-    <div>
-      <h2>6. Visual Showcase (Part 2)</h2>
-      
-      <div class="screenshot-container">
-        <img src="media__1782461997897.png" alt="Why Join SCT / Find Yourself">
-        <div class="screenshot-caption">Figure 7.1: Find Yourself feature card layout displaying membership benefits with interactive states.</div>
-      </div>
-
-      <div class="screenshot-container" style="margin-top: 15px;">
-        <img src="media__1782461997768.png" alt="Upcoming Programs Grid">
-        <div class="screenshot-caption">Figure 7.2: Upcoming Events &amp; Programs section showing session details, location, and CTAs.</div>
-      </div>
-
-      <p style="font-size: 13px; margin-top: 10px;">
-        <strong>Visual Details:</strong> The Why Join cards use glass containers. Upcoming Programs show time, date, location details, and a direct registration CTA.
-      </p>
-    </div>
-
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 9</span>
-    </div>
-  </div>
-
-
-  <!-- ==================== PAGE 10: SCREENSHOTS 3 ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">8. Visual Showcase</span>
-    </div>
-    
-    <div>
-      <h2>6. Visual Showcase (Part 3)</h2>
-      
-      <div class="screenshot-container" style="height: 10cm; overflow: hidden; display: flex; align-items: center;">
-        <img src="media__1782462012805.png" alt="Contact Form and Footer" style="width: 100%;">
-      </div>
-      <div class="screenshot-caption" style="margin-top: -10px; margin-bottom: 12px;">Figure 8.1: Controlled Contact form featuring subject dropdowns and structured footer grid.</div>
-
-      <div class="card">
-        <h3>Form Validation &amp; Option Color contrast</h3>
-        <p style="font-size: 12.5px; margin-bottom: 0;">
-          The contact form handles input validation, throwing error messages immediately upon submission. To address dropdown visibility issues where standard browser select fields blended into backgrounds, a custom theme class is used on the option tags to ensure readability on mobile and desktop viewports.
-        </p>
-      </div>
-
-      <div class="card" style="margin-top: 12px;">
-        <h3>Footer Sitemap Hierarchy</h3>
-        <p style="font-size: 12.5px; margin-bottom: 0;">
-          The footer divides navigation into Quick Links, Programs, and Community. Direct anchors lead to the official SCT Facebook page, LinkedIn profile, and active student groups.
-        </p>
-      </div>
-    </div>
-
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 10</span>
-    </div>
-  </div>
-
-
-  <!-- ==================== PAGE 11: CHALLENGES FACED ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">9. Challenges Faced</span>
-    </div>
-    
-    <div>
-      <h2>9. Challenges Faced &amp; Code Resolutions</h2>
-      
-      <h3 style="margin-top: 15px;">9.1 React 19 CountUp Rendering Exception</h3>
-      <p>
-        <strong>Problem:</strong> Standard third-party countup libraries crashed when loading stats cards. React 19 concurrent features caused exceptions inside older library lifecycles, causing the site to display a blank white screen upon scroll.
-      </p>
-      <p>
-        <strong>Solution:</strong> Built a custom countup component using the native browser <code>requestAnimationFrame</code> API inside the codebase. It increments numbers using ease-out curves and handles clean component unmounting.
-      </p>
-
-      <h3 style="margin-top: 15px;">9.2 Viewport Intersection Hooks</h3>
-      <p>
-        <strong>Problem:</strong> Custom viewport listeners caused layout shifts on scroll.
-      </p>
-      <p>
-        <strong>Solution:</strong> Standardized animations using Framer Motion's native <code>whileInView</code> and <code>viewport={{ once: true }}</code> attributes, which leverage CSS transitions and hardware acceleration.
-      </p>
-
-      <h3 style="margin-top: 15px;">9.3 Windows OneDrive &amp; Dev Environment Locks</h3>
-      <p>
-        <strong>Problem:</strong> The Vite compiler hung on `transforming...` during builds. OneDrive actively synced the Desktop workspace folder, holding locks on configurations and assets.
-      </p>
-      <p>
-        <strong>Solution:</strong> Created a PowerShell script ([local_build_npm.ps1]) to copy source files to a local temp folder outside OneDrive, run the build cleanly, and transfer the `dist` folder back.
-      </p>
-
-      <h3 style="margin-top: 15px;">9.4 Local Network git push Dropouts</h3>
-      <p>
-        <strong>Problem:</strong> Local network dropouts prevented pushing commits to GitHub.
-      </p>
-      <p>
-        <strong>Solution:</strong> Created a PowerShell REST script ([push_modifications.ps1]) that base64 encodes files and uploads them via the GitHub REST API contents endpoint.
-      </p>
-    </div>
-
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 11</span>
-    </div>
-  </div>
-
-
-  <!-- ==================== PAGE 12: FUTURE IMPROVEMENTS & CONCLUSION ==================== -->
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">STUDENTS CLUB THARPARKAR (SCT)</span>
-      <span class="doc-title">10. Future &amp; Conclusion</span>
-    </div>
-    
-    <div>
-      <h2>10. Future Improvements</h2>
-      <p>
-        To expand this landing page into a full-scale web application, the following additions are planned:
-      </p>
-      <ul>
-        <li><strong>Volunteer Portal &amp; Accounts:</strong> A student log-in system allowing volunteers to log hours, apply for counseling, and claim certificates.</li>
-        <li><strong>Dynamic Donation Processing Gateway:</strong> Integration with Stripe, PayPal, or local mobile wallets (EasyPaisa, JazzCash) to receive donations securely.</li>
-        <li><strong>Live Events Management System:</strong> An admin dashboard allowing coordinators to publish events, track capacities, and email attendees.</li>
-        <li><strong>Outreach News Blog:</strong> A CMS-backed blog showcasing village outreach activities.</li>
-      </ul>
-
-      <h2 style="margin-top: 30px;">11. Conclusion</h2>
-      <p>
-        The developed landing page for the <strong>Students Club Tharparkar (SCT)</strong> is a modern platform that combines aesthetic appeal with technical performance. Refactored into a Poppins and Navy Blue theme, the landing page establishes a professional brand voice for the organization.
-      </p>
-      <p>
-        From a technical standpoint, the project demonstrates senior-level frontend engineering. Implementing custom React 19 countups, viewport animations, and direct REST API deployment scripts resolved early runtime and environment issues. The resulting compiled bundles are highly optimized:
-      </p>
-      <div class="card" style="margin-top: 10px; background: rgba(26, 35, 126, 0.04); border: 1.5px solid var(--color-navy);">
-        <p style="font-size: 13px; margin-bottom: 0; text-align: center; font-weight: 600;">
-          HTML Bundle: 2.21 kB | CSS Assets: 42.95 kB | JS Assets: 396.23 kB
-        </p>
-      </div>
-      <p style="margin-top: 15px;">
-        In conclusion, this project provides SCT with a performant, accessible website. By ensuring compliance with all sitemap layouts and branding rules, the site is ready to help SCT achieve its mission of empowering rural youth and building future leaders.
-      </p>
-    </div>
-
-    <div class="page-footer">
-      <span class="student-info">Lokesh Kumar — Website Documentation Report</span>
-      <span>Page 12</span>
-    </div>
+    <p style="margin-top: 20px;">
+      In conclusion, this project provides SCT with a fast, responsive, and accessible website. By meeting all design and feature requirements, the platform is ready to support SCT's mission of empowering youth and building future leaders in Tharparkar.
+    </p>
   </div>
 
 </div>
