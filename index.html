@@ -1,38 +1,857 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/sct-favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Optimization -->
+  <title>Students Club Tharparkar (SCT) — Empowering Students, Building Future Leaders</title>
+  <meta name="description" content="Students Club Tharparkar (SCT) is a registered non-profit student network empowering rural student leadership, bridging digital divides, and organizing educational bootcamps in rural Sindh, Pakistan." />
+  <meta name="keywords" content="Students Club Tharparkar, SCT, Tharparkar, education, leadership, bootcamps, Mithi, Sindh, student network" />
+  <meta name="author" content="Lokesh Kumar" />
+  <meta name="robots" content="index, follow" />
 
-    <!-- SEO Meta Tags -->
-    <title>Students Club Tharparkar (SCT) — Empowering Students, Building Future Leaders</title>
-    <meta name="description" content="Students Club Tharparkar (SCT) is a student-led organization based in Mithi, Tharparkar, dedicated to empowering students through academic, personal and professional development programs." />
-    <meta name="keywords" content="Students Club Tharparkar, SCT, Tharparkar, student organization, Mithi, education, leadership, Pakistan" />
-    <meta name="author" content="Students Club Tharparkar" />
-    <meta name="robots" content="index, follow" />
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Students Club Tharparkar (SCT)" />
+  <meta property="og:description" content="Empowering Students, Building Future Leaders. Join the leading student network in Tharparkar." />
+  <meta property="og:url" content="https://sct-landing-page.vercel.app/" />
+  <meta property="og:site_name" content="Students Club Tharparkar" />
 
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Students Club Tharparkar (SCT) — Empowering Students, Building Future Leaders" />
-    <meta property="og:description" content="Join SCT — the leading student organization in Tharparkar empowering 500+ students through world-class programs and community initiatives." />
-    <meta property="og:site_name" content="Students Club Tharparkar" />
+  <!-- Google Font: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Students Club Tharparkar (SCT)" />
-    <meta name="twitter:description" content="Empowering Students, Building Future Leaders — Join SCT today." />
+  <!-- Links to style.css -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="navbar-header" id="navbar-header">
+    <div class="navbar-container">
+      <a href="#" class="logo-link">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+          </svg>
+        </div>
+        <span class="logo-text">SCT <span class="logo-subtext">Tharparkar</span></span>
+      </a>
 
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#0a1628" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav">
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#impact" class="nav-link">Our Impact</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#programs" class="nav-link">Programs</a></li>
+          <li><a href="#team" class="nav-link">Our Team</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="navbar-actions">
+        <a href="#donate" class="btn-donate-nav">Donate Now</a>
+        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Toggle Navigation Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12" class="line-mid"></line>
+            <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+            <line x1="3" y1="18" x2="21" y2="18" class="line-bot"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <ul class="mobile-nav-menu">
+      <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+      <li><a href="#about" class="mobile-nav-link">About Us</a></li>
+      <li><a href="#impact" class="mobile-nav-link">Our Impact</a></li>
+      <li><a href="#features" class="mobile-nav-link">Features</a></li>
+      <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+      <li><a href="#programs" class="mobile-nav-link">Programs</a></li>
+      <li><a href="#team" class="mobile-nav-link">Our Team</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+      <li style="margin-top: 20px;"><a href="#donate" class="btn-donate-mobile">Donate Now</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero-section" id="hero">
+    <!-- Animated background particles container -->
+    <div class="hero-bg-shapes">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+    </div>
+    
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="hero-tagline">Empowering Students, Building Future Leaders</span>
+        <h1 class="hero-title">Unleashing Youth Potential In <span class="highlight-text">Tharparkar</span></h1>
+        <p class="hero-description">
+          Students Club Tharparkar is a non-profit student network organizing digital skills training, public speaking workshops, guidance counseling, and career mentorship for students across rural Sindh.
+        </p>
+        <div class="hero-actions">
+          <a href="#programs" class="btn-primary">Explore Programs</a>
+          <a href="#about" class="btn-secondary">Learn More</a>
+        </div>
+
+        <!-- Quick Mini Stats in Hero -->
+        <div class="hero-mini-stats">
+          <div class="mini-stat-item">
+            <span class="mini-stat-num">500+</span>
+            <span class="mini-stat-lbl">Students Empowered</span>
+          </div>
+          <div class="mini-stat-item">
+            <span class="mini-stat-num">15+</span>
+            <span class="mini-stat-lbl">Bootcamps Held</span>
+          </div>
+          <div class="mini-stat-item">
+            <span class="mini-stat-num">50+</span>
+            <span class="mini-stat-lbl">Active Volunteers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-area">
+        <div class="hero-image-wrapper">
+          <img src="media__1782461997828.png" alt="SCT Student Interactive Classroom Session" class="hero-img" />
+          <div class="image-overlay-card card-1">
+            <div class="overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <div>
+              <span class="overlay-value">100% Free</span>
+              <span class="overlay-label">Bootcamps &amp; Training</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== DONATE BANNER ==================== -->
+  <section class="donate-banner-section" id="donate">
+    <div class="donate-banner-container">
+      <div class="donate-text-content">
+        <span class="donate-label">Summer Tech Bootcamps Fund</span>
+        <h2 class="donate-title">Help Us Reach 30+ Villages in Tharparkar</h2>
+        <p class="donate-desc">
+          SCT operates entirely on sponsorships and community contributions. Your support funds workspace internet, computing resources, power backups, and logistics to conduct free IT courses for rural students.
+        </p>
+      </div>
+
+      <div class="donate-details-card">
+        <h3 class="card-donate-header">Direct Banking Transfer</h3>
+        <p class="card-donate-sub">Copy account details below to donate:</p>
+        
+        <div class="bank-details-list">
+          <div class="detail-row">
+            <span class="row-label">Bank Name:</span>
+            <span class="row-value">National Bank of Pakistan (NBP)</span>
+          </div>
+          <div class="detail-row">
+            <span class="row-label">Account Title:</span>
+            <span class="row-value">Students Club Tharparkar</span>
+          </div>
+          <div class="detail-row highlight-row">
+            <span class="row-label">Account No:</span>
+            <div class="copy-value-wrapper">
+              <span class="row-value" id="account-number">1048-283492-392</span>
+              <button class="btn-copy" id="btn-copy-account" aria-label="Copy Account Number">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="copy-icon">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span class="copy-tooltip" id="copy-tooltip">Copy</span>
+              </button>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="row-label">IBAN/IFSC:</span>
+            <span class="row-value">PK56NBP10480283492392</span>
+          </div>
+        </div>
+        <div class="donate-card-actions">
+          <a href="#contact" class="btn-donate-card">Share Transfer Receipt</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== ABOUT US SECTION ==================== -->
+  <section class="about-section" id="about">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Who We Are</span>
+        <h2 class="section-title">Bridging The Rural-Digital Divide</h2>
+        <p class="section-desc">
+          Founded by students for students, Students Club Tharparkar has grown from a local support circle in Mithi into a dedicated district-wide network addressing education inequality.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <h3 class="about-card-title">Our Mission</h3>
+          <p class="about-card-desc">
+            To make modern digital literacy, career advice, and leadership building tools accessible and free of charge for every student, volunteer, and girl in the Tharparkar desert region.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="about-card-title">Our Vision</h3>
+          <p class="about-card-desc">
+            A self-sustaining hub of rural IT professionals, digital creators, and visionary leaders coming from the desert schools to contribute to international tech platforms.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="about-card-title">Our Core Pillars</h3>
+          <p class="about-card-desc">
+            Focusing on three core principles: **Educational Support** (IT, guidance), **Leadership Grooming** (debates, speaker bootcamps), and **Youth Welfare** (scholarships).
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Split Banner inside About -->
+      <div class="about-split-banner">
+        <div class="split-image">
+          <img src="media__1782461997718.png" alt="SCT Members and Voluteers Meeting" class="split-img" />
+        </div>
+        <div class="split-content">
+          <h3>Why We Do What We Do</h3>
+          <p>
+            Tharparkar is rich in student potential, yet lacks computer hardware access, mentor networks, and career counsel. SCT acts as a critical link. We gather resources, invite top field engineers, and establish makeshift tech camps right in the desert hubs.
+          </p>
+          <ul class="split-bullets">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="bullet-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Empowering girls through digital outreach initiatives
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="bullet-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Distributing local scholarships to deserving desert students
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="bullet-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Incubating rural software creators and freelancers
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== PARTNERS SECTION ==================== -->
+  <section class="partners-section">
+    <div class="section-container">
+      <div class="partners-header">
+        <span>Our Trusted Partners &amp; Sponsors</span>
+      </div>
+      <div class="partners-grid">
+        <div class="partner-logo">
+          <span class="logo-mock">Thar Tech Hub</span>
+        </div>
+        <div class="partner-logo">
+          <span class="logo-mock">Sindh IT Board</span>
+        </div>
+        <div class="partner-logo">
+          <span class="logo-mock">SEF Foundation</span>
+        </div>
+        <div class="partner-logo">
+          <span class="logo-mock">Mithi Youth Center</span>
+        </div>
+        <div class="partner-logo">
+          <span class="logo-mock">Desert Code Lab</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== IMPACT NUMBERS SECTION ==================== -->
+  <section class="impact-section" id="impact">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Numbers Speak</span>
+        <h2 class="section-title">Making A Measurable Difference</h2>
+        <p class="section-desc">
+          By pooling resources together, our student-run team has expanded its footprint to multiple sub-districts (talukas) of Tharparkar.
+        </p>
+      </div>
+
+      <div class="impact-grid" id="counters-box">
+        <div class="impact-card">
+          <div class="impact-card-num"><span class="counter-num" data-target="500">0</span>+</div>
+          <h3 class="impact-card-lbl">Student Beneficiaries</h3>
+          <p class="impact-card-desc">Rural high school and college students trained in basic IT, programming, and speaking.</p>
+        </div>
+
+        <div class="impact-card">
+          <div class="impact-card-num"><span class="counter-num" data-target="15">0</span>+</div>
+          <h3 class="impact-card-lbl">Programs &amp; Bootcamps</h3>
+          <p class="impact-card-desc">Digital literacy workshops, English bootcamps, and career guidance events organized.</p>
+        </div>
+
+        <div class="impact-card">
+          <div class="impact-card-num"><span class="counter-num" data-target="50">0</span>+</div>
+          <h3 class="impact-card-lbl">Active Volunteers</h3>
+          <p class="impact-card-desc">Mentors, facilitators, and logistics leaders volunteering time across Sindh.</p>
+        </div>
+
+        <div class="impact-card">
+          <div class="impact-card-num"><span class="counter-num" data-target="20">0</span>+</div>
+          <h3 class="impact-card-lbl">Villages Covered</h3>
+          <p class="impact-card-desc">Remote desert settlements visited with educational seminars and computer setups.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== FIND YOURSELF / FEATURES ==================== -->
+  <section class="features-section" id="features">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Find Yourself In SCT</span>
+        <h2 class="section-title">What You Get As A Member</h2>
+        <p class="section-desc">
+          Joining Students Club Tharparkar means unlock doors to new opportunities, networking portals, and specialized tech skills.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Digital Literacy</h3>
+          <p class="feature-desc">Learn essential computing skills, including Word processing, Excel modeling, web design, and AI basics.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Public Speaking</h3>
+          <p class="feature-desc">Overcome stage fright through speech contests, mock panel debates, and active speaking exercises.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Youth Leadership</h3>
+          <p class="feature-desc">Organize workshops, lead local cohorts, manage project funds, and develop coordination skills.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <h3 class="feature-title">Community Networking</h3>
+          <p class="feature-desc">Get direct access to guest mentors, IT specialists, senior engineers, and alumni from leading universities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== PHOTO GALLERY ==================== -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Visual Chronicles</span>
+        <h2 class="section-title">Our Event Photo Gallery</h2>
+        <p class="section-desc">
+          Browse through moments from our latest workshops, digital tech classes, speaking camps, and local student gatherings.
+        </p>
+      </div>
+
+      <!-- Gallery Filter Tabs -->
+      <div class="gallery-filters">
+        <button class="filter-tab active" data-filter="all">All Photos</button>
+        <button class="filter-tab" data-filter="workshops">Workshops</button>
+        <button class="filter-tab" data-filter="events">Events</button>
+        <button class="filter-tab" data-filter="activities">Activities</button>
+      </div>
+
+      <!-- Gallery Photo Grid -->
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item" data-category="workshops">
+          <div class="gallery-img-wrapper">
+            <img src="media__1782461997828.png" alt="Basic IT Training Workshop" />
+            <div class="gallery-info-overlay">
+              <h4>Digital Skills Lab</h4>
+              <span>Workshops • Mithi Center</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item" data-category="events">
+          <div class="gallery-img-wrapper">
+            <img src="media__1782461997768.png" alt="Annual Student Debating Seminar" />
+            <div class="gallery-info-overlay">
+              <h4>Annual Speaking Seminar</h4>
+              <span>Events • Hall 1</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item" data-category="activities">
+          <div class="gallery-img-wrapper">
+            <img src="media__1782461997718.png" alt="Volunteer Planning Assembly" />
+            <div class="gallery-info-overlay">
+              <h4>Volunteers Assembly</h4>
+              <span>Activities • Planning Meet</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item" data-category="workshops">
+          <div class="gallery-img-wrapper">
+            <img src="media__1782461997897.png" alt="Introduction to Programming Bootcamp" />
+            <div class="gallery-info-overlay">
+              <h4>Code Camp Intro</h4>
+              <span>Workshops • Thar Park</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 5 -->
+        <div class="gallery-item" data-category="activities">
+          <div class="gallery-img-wrapper">
+            <img src="media__1782462012805.png" alt="Career Counseling Outreach Session" />
+            <div class="gallery-info-overlay">
+              <h4>Outreach Counsel</h4>
+              <span>Activities • Village Outreach</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== UPCOMING EVENTS & PROGRAMS ==================== -->
+  <section class="programs-section" id="programs">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Learning Pathways</span>
+        <h2 class="section-title">Upcoming Events &amp; Programs</h2>
+        <p class="section-desc">
+          Enroll in our upcoming cohort training cycles. Admissions are open on a first-come, first-served basis for all desert students.
+        </p>
+      </div>
+
+      <div class="programs-grid">
+        <!-- Program 1 -->
+        <div class="program-card">
+          <div class="program-badge">Registering</div>
+          <div class="program-card-content">
+            <span class="program-date">July 15 - August 15, 2026</span>
+            <h3 class="program-card-title">WordPress &amp; Freelancing Bootcamp</h3>
+            <p class="program-card-desc">
+              A comprehensive hands-on program covering custom website builds, domain setups, and bidding platforms for desert youth looking to monetize technical skills.
+            </p>
+            <div class="program-meta">
+              <div class="meta-detail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="meta-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Mithi IT Lab</span>
+              </div>
+              <div class="meta-detail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Mon-Wed, 4:00 PM</span>
+              </div>
+            </div>
+            <button class="btn-register" data-program="WordPress &amp; Freelancing Bootcamp">Register Now</button>
+          </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="program-card">
+          <div class="program-badge">Registering</div>
+          <div class="program-card-content">
+            <span class="program-date">August 01 - August 15, 2026</span>
+            <h3 class="program-card-title">English Speaking &amp; Public Presentation</h3>
+            <p class="program-card-desc">
+              Focuses on interview preparation, resume creation, business writing, public speaking confidence, and professional etiquette training.
+            </p>
+            <div class="program-meta">
+              <div class="meta-detail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="meta-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Mithi Youth Hall</span>
+              </div>
+              <div class="meta-detail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Thu-Sat, 3:30 PM</span>
+              </div>
+            </div>
+            <button class="btn-register" data-program="English Speaking &amp; Presentation">Register Now</button>
+          </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="program-card">
+          <div class="program-badge badge-closed">Coming Soon</div>
+          <div class="program-card-content">
+            <span class="program-date">September 10 - October 10, 2026</span>
+            <h3 class="program-card-title">Python Core &amp; Web Scraping</h3>
+            <p class="program-card-desc">
+              Learn basics of logical structures, parsing file streams, web scraping, data collection, and fundamental database operations.
+            </p>
+            <div class="program-meta">
+              <div class="meta-detail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="meta-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Online / Hybrid</span>
+              </div>
+              <div class="meta-detail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Fri-Sun, 6:00 PM</span>
+              </div>
+            </div>
+            <button class="btn-register" disabled data-program="Python Core &amp; Web Scraping">Coming Soon</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== MEET OUR TEAM ==================== -->
+  <section class="team-section" id="team">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">The Pillars of SCT</span>
+        <h2 class="section-title">Meet Our Dedicated Leadership Team</h2>
+        <p class="section-desc">
+          SCT is guided by experienced student leaders, teachers, and developers volunteering their skills for Tharparkar's development.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="team-card">
+          <div class="team-avatar-wrapper">
+            <div class="avatar-mock-bg team-bg-1">
+              <span>LK</span>
+            </div>
+          </div>
+          <h3 class="team-name">Lokesh Kumar</h3>
+          <span class="team-role">Founder &amp; President</span>
+          <p class="team-bio">Coordinating general operations, corporate partnerships, and syllabus standards.</p>
+          <div class="team-socials">
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://github.com" target="_blank" aria-label="GitHub Account">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-card">
+          <div class="team-avatar-wrapper">
+            <div class="avatar-mock-bg team-bg-2">
+              <span>PS</span>
+            </div>
+          </div>
+          <h3 class="team-name">Pardeep Singh</h3>
+          <span class="team-role">Head of Technical Programs</span>
+          <p class="team-bio">Directing JavaScript, Python courses, lab setups, and hardware logistics.</p>
+          <div class="team-socials">
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-card">
+          <div class="team-avatar-wrapper">
+            <div class="avatar-mock-bg team-bg-3">
+              <span>SM</span>
+            </div>
+          </div>
+          <h3 class="team-name">Sajal Memon</h3>
+          <span class="team-role">Head of English &amp; Speaking</span>
+          <p class="team-bio">Overseeing speech bootcamps, debating guides, and community enrollment.</p>
+          <div class="team-socials">
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-card">
+          <div class="team-avatar-wrapper">
+            <div class="avatar-mock-bg team-bg-4">
+              <span>AL</span>
+            </div>
+          </div>
+          <h3 class="team-name">Ali Raza Lohar</h3>
+          <span class="team-role">Outreach Coordinator</span>
+          <p class="team-bio">Coordinating programs in distant villages and managing field setups.</p>
+          <div class="team-socials">
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== CONTACT US SECTION ==================== -->
+  <section class="contact-section" id="contact">
+    <div class="section-container">
+      <div class="contact-grid-wrapper">
+        <div class="contact-info-column">
+          <span class="section-tag" style="color: #f5c518;">Get In Touch</span>
+          <h2 class="contact-col-title">Have Questions? Reach Out To Us!</h2>
+          <p class="contact-col-desc">
+            We are always open to collaborations, donor inquiries, guest speaker visits, and volunteer enrollments.
+          </p>
+
+          <div class="contact-methods">
+            <div class="method-card">
+              <div class="method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <h4>General Email</h4>
+                <span>info@studentsclubthar.org</span>
+              </div>
+            </div>
+
+            <div class="method-card">
+              <div class="method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <h4>Headquarters</h4>
+                <span>SCT Club House, Mithi, Tharparkar</span>
+              </div>
+            </div>
+
+            <div class="method-card">
+              <div class="method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <h4>Phone / Support</h4>
+                <span>+92 334 2938492</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-column">
+          <form class="contact-form" id="contact-form">
+            <h3 class="form-title">Send Us A Message</h3>
+            
+            <div class="form-group">
+              <label for="form-name">Full Name</label>
+              <input type="text" id="form-name" placeholder="Enter your full name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="form-email">Email Address</label>
+              <input type="email" id="form-email" placeholder="name@domain.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="form-subject">Purpose of Contact</label>
+              <select id="form-subject" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="joining">Joining as a Volunteer</option>
+                <option value="donation">Donation Inquiry</option>
+                <option value="partnership">Sponsorship &amp; Partner Proposals</option>
+                <option value="other">General Question</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message">Your Message</label>
+              <textarea id="form-message" rows="4" placeholder="How can we help you?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-form" id="btn-submit-contact">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer-area">
+    <div class="footer-container">
+      <div class="footer-col-brand">
+        <a href="#" class="footer-logo">
+          <div class="logo-icon bg-gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1a237e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+            </svg>
+          </div>
+          <span class="logo-text">SCT <span class="logo-subtext">Tharparkar</span></span>
+        </a>
+        <p class="footer-brand-desc">
+          Empowering rural students through digital literacy, coding access, guidance counseling, and youth leadership training.
+        </p>
+      </div>
+
+      <div class="footer-col-links">
+        <h4>Sitemap</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#impact">Our Impact</a></li>
+          <li><a href="#gallery">Event Gallery</a></li>
+          <li><a href="#programs">Upcoming Programs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-links">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#donate">Donate Now</a></li>
+          <li><a href="#contact">Become a Volunteer</a></li>
+          <li><a href="#contact">Partner With Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-social">
+        <h4>Follow Us</h4>
+        <p>Keep up with our latest announcements and bootcamp updates:</p>
+        <div class="footer-social-row">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook Page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn Profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <span>&copy; 2026 Students Club Tharparkar. All Rights Reserved.</span>
+        <span>Developed by: <strong>Lokesh Kumar</strong></span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==================== REGISTRATION MODAL ==================== -->
+  <div class="modal-overlay" id="register-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Registration Modal">&times;</button>
+      <h3 class="modal-title">Program Admission Portal</h3>
+      <span class="modal-program-subtitle" id="modal-program-name">Program Title Placeholder</span>
+      
+      <form class="modal-form" id="modal-form">
+        <div class="form-group">
+          <label for="modal-name">Student Full Name</label>
+          <input type="text" id="modal-name" placeholder="Enter your full name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="modal-email">Email Address</label>
+          <input type="email" id="modal-email" placeholder="name@domain.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="modal-phone">Phone Number (WhatsApp)</label>
+          <input type="tel" id="modal-phone" placeholder="e.g. +92 334 1234567" required />
+        </div>
+
+        <div class="form-group">
+          <label for="modal-education">Current Level of Education</label>
+          <select id="modal-education" required>
+            <option value="" disabled selected>Select educational level</option>
+            <option value="matric">Matriculation / Grade 9-10</option>
+            <option value="intermediate">Intermediate / College Grade 11-12</option>
+            <option value="university">University Student</option>
+            <option value="other">Other / Self-Taught</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-modal-submit" id="btn-modal-submit">Confirm Registration</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ==================== TOAST NOTIFICATION BANNER ==================== -->
+  <div class="toast-notification" id="toast-notification">
+    <div class="toast-content">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="toast-check-icon">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span id="toast-message">Success message goes here.</span>
+    </div>
+  </div>
+
+
+  <!-- Links to app.js -->
+  <script src="app.js"></script>
+</body>
 </html>
