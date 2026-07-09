@@ -565,6 +565,29 @@
             <button class="btn-register" disabled data-program="Python Core &amp; Web Scraping">Coming Soon</button>
           </div>
         </div>
+
+        <!-- Program 4: Internship Opportunities -->
+        <div class="program-card">
+          <div class="program-badge" style="background-color: var(--color-gold); color: var(--color-navy);">Opportunities</div>
+          <div class="program-card-content">
+            <span class="program-date">Rolling Cohort Cycle</span>
+            <h3 class="program-card-title">SCT Internship Program 2026</h3>
+            <p class="program-card-desc">
+              Gain real-world experience, learn software engineering principles, and work on community projects. Inquiries open for Web Dev, UI/UX, and Marketing.
+            </p>
+            <div class="program-meta">
+              <div class="meta-detail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="meta-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>SCT Club House / Hybrid</span>
+              </div>
+              <div class="meta-detail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Flexible Hours</span>
+              </div>
+            </div>
+            <button class="btn-register" id="btn-inquire-trigger" style="background-color: var(--color-navy); color: white;">Inquire Now</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -716,6 +739,11 @@
             </div>
 
             <div class="form-group">
+              <label for="form-phone">Phone Number</label>
+              <input type="tel" id="form-phone" placeholder="e.g. +92 334 1234567" required />
+            </div>
+
+            <div class="form-group">
               <label for="form-subject">Purpose of Contact</label>
               <select id="form-subject" required>
                 <option value="" disabled selected>Select an option</option>
@@ -835,6 +863,51 @@
         </div>
 
         <button type="submit" class="btn-modal-submit" id="btn-modal-submit">Confirm Registration</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ==================== INTERNSHIP INQUIRY MODAL ==================== -->
+  <div class="modal-overlay" id="inquiry-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="inquiry-close-btn" aria-label="Close Inquiry Modal">&times;</button>
+      <h3 class="modal-title">SCT Internship Inquiry</h3>
+      <span class="modal-program-subtitle">Ask about open positions and internship requirements</span>
+      
+      <form class="modal-form" id="inquiry-form">
+        <div class="form-group">
+          <label for="inquiry-name">Full Name</label>
+          <input type="text" id="inquiry-name" placeholder="Enter your full name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="inquiry-email">Email Address</label>
+          <input type="email" id="inquiry-email" placeholder="name@domain.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="inquiry-whatsapp">WhatsApp Number</label>
+          <input type="tel" id="inquiry-whatsapp" placeholder="e.g. +92 334 1234567" required />
+        </div>
+
+        <div class="form-group">
+          <label for="inquiry-department">Interested Department</label>
+          <select id="inquiry-department" required>
+            <option value="" disabled selected>Select department</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Graphic Design & UI/UX">Graphic Design & UI/UX</option>
+            <option value="Social Media Marketing">Social Media Marketing</option>
+            <option value="Management & Operations">Management & Operations</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="inquiry-message">Message / Query</label>
+          <textarea id="inquiry-message" rows="3" placeholder="Describe your background and what you'd like to ask" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-modal-submit">Submit Inquiry</button>
       </form>
     </div>
   </div>

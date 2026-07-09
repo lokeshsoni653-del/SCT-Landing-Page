@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "9b1ad8ba-d2f1-4db8-8dbe-1a221f7db13e",
+		"name": "Students Club Tharparkar (SCT) APIs",
+		"description": "Postman API testing collection for SCT Web backend forms and administration data routes (Task 03).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public API Forms",
+			"item": [
+				{
+					"name": "POST Contact Form Submission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Lokesh Kumar\",\n    \"email\": \"lokesh@domain.com\",\n    \"phone\": \"+92 334 1234567\",\n    \"message\": \"Hi SCT Team! I would like to volunteer for the upcoming public presentation bootcamp.\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/contact",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"contact"
+							]
+						},
+						"description": "Stores user messages submitted via the Contact form."
+					},
+					"response": []
+				},
+				{
+					"name": "POST Internship Inquiry Submission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jane Doe\",\n    \"email\": \"jane.doe@domain.com\",\n    \"whatsapp\": \"+92 331 9988776\",\n    \"department\": \"Web Development\",\n    \"message\": \"I would like to inquire about the eligibility criteria for the Web Dev internship cohort starting next month.\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/internship",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"internship"
+							]
+						},
+						"description": "Stores student inquiries sent from the Internship Inquiry portal modal."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Control Routes",
+			"item": [
+				{
+					"name": "GET Fetch All Contacts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/admin/contacts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"admin",
+								"contacts"
+							]
+						},
+						"description": "Retrieves all saved contact entries from the database."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Fetch All Inquiries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/admin/inquiries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"admin",
+								"inquiries"
+							]
+						},
+						"description": "Retrieves all saved internship inquiries from the database."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Specific Contact Entry",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/admin/contacts/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"admin",
+								"contacts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "603fde22b512a831e0f0c112",
+									"description": "Database ID of record to delete"
+								}
+							]
+						},
+						"description": "Deletes a single contact record from the database by ID."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Specific Inquiry Entry",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/admin/inquiries/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"admin",
+								"inquiries",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "603fde22b512a831e0f0c115",
+									"description": "Database ID of record to delete"
+								}
+							]
+						},
+						"description": "Deletes a single internship record from the database by ID."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

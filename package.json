@@ -1,0 +1,16 @@
+{
+  "name": "sct-landing-page",
+  "version": "1.0.0",
+  "description": "Students Club Tharparkar landing page and Express backend unified repository",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "build": "echo 'Vanilla migration - no build step required'"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1"
+  }
+}

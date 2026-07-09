@@ -218,44 +218,178 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  /* ==================== 7. FORM SUBMISSIONS & SUCCESS TOAST ==================== */
+  /* ==================== 7. INTERNSHIP INQUIRY MODAL ==================== */
+  const inquiryModal = document.getElementById('inquiry-modal');
+  const inquiryCloseBtn = document.getElementById('inquiry-close-btn');
+  const btnInquireTrigger = document.getElementById('btn-inquire-trigger');
+  const inquiryForm = document.getElementById('inquiry-form');
+
+  if (btnInquireTrigger) {
+    btnInquireTrigger.addEventListener('click', () => {
+      inquiryModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  function closeInquiryModal() {
+    inquiryModal.classList.remove('open');
+    document.body.style.overflow = '';
+    inquiryForm.reset();
+  }
+
+  if (inquiryCloseBtn) {
+    inquiryCloseBtn.addEventListener('click', closeInquiryModal);
+  }
+
+  if (inquiryModal) {
+    inquiryModal.addEventListener('click', (e) => {
+      if (e.target === inquiryModal) {
+        closeInquiryModal();
+      }
+    });
+  }
+
+
+  /* ==================== 8. FORM SUBMISSIONS & SUCCESS TOAST ==================== */
   const contactForm = document.getElementById('contact-form');
   const toastNotification = document.getElementById('toast-notification');
   const toastMessage = document.getElementById('toast-message');
 
-  function showToast(message) {
+  // Automatically detect environment: use relative path locally and on unified Vercel domain
+  const API_HOST = '';
+
+  function showToast(message, isSuccess = true) {
     toastMessage.textContent = message;
+    
+    // Dynamically adjust toast visual border style based on state
+    const checkIcon = toastNotification.querySelector('.toast-check-icon');
+    if (isSuccess) {
+      toastNotification.style.borderLeft = '4px solid #22c55e';
+      if (checkIcon) checkIcon.style.display = 'block';
+    } else {
+      toastNotification.style.borderLeft = '4px solid #ef4444';
+      if (checkIcon) checkIcon.style.display = 'none';
+    }
+    
     toastNotification.classList.add('show');
     
-    // Auto hide after 4 seconds
+    // Auto hide after 4.5 seconds
     setTimeout(() => {
       toastNotification.classList.remove('show');
-    }, 4000);
+    }, 4500);
   }
 
-  // Handle Contact Form Submit
+  // Handle Contact Form Submit via Express API
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // Collect values for validation/receipt
       const name = document.getElementById('form-name').value.trim();
       const email = document.getElementById('form-email').value.trim();
+      const phone = document.getElementById('form-phone').value.trim();
       const subject = document.getElementById('form-subject').value;
-      const message = document.getElementById('form-message').value.trim();
+      const messageText = document.getElementById('form-message').value.trim();
 
-      if (!name || !email || !subject || !message) {
-        alert('Please fill in all fields before submitting.');
+      if (!name || !email || !phone || !subject || !messageText) {
+        showToast('Please fill in all fields before submitting.', false);
         return;
       }
 
-      // Successful receipt simulation
-      showToast(`Thank you, ${name}! Your inquiry has been sent successfully.`);
-      contactForm.reset();
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      
+      // Disable UI during transmission
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(`${API_HOST}/api/contact`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            message: `[Subject: ${subject}] ${messageText}`
+          })
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          showToast(`Thank you, ${name}! Your message was successfully stored.`, true);
+          contactForm.reset();
+        } else {
+          showToast(`Error: ${result.error || 'Unable to submit.'}`, false);
+        }
+      } catch (err) {
+        console.error('API Error:', err);
+        showToast('Server connection failed. Storing message locally instead.', false);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
     });
   }
 
-  // Handle Modal Registration Form Submit
+  // Handle Internship Inquiry Form Submit via Express API
+  if (inquiryForm) {
+    inquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('inquiry-name').value.trim();
+      const email = document.getElementById('inquiry-email').value.trim();
+      const whatsapp = document.getElementById('inquiry-whatsapp').value.trim();
+      const department = document.getElementById('inquiry-department').value;
+      const messageText = document.getElementById('inquiry-message').value.trim();
+
+      if (!name || !email || !whatsapp || !department || !messageText) {
+        showToast('Please fill in all details.', false);
+        return;
+      }
+
+      const submitBtn = inquiryForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      try {
+        const response = await fetch(`${API_HOST}/api/internship`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            whatsapp,
+            department,
+            message: messageText
+          })
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          closeInquiryModal();
+          showToast(`Success! Your inquiry for ${department} has been submitted.`, true);
+        } else {
+          showToast(`Error: ${result.error || 'Submission failed.'}`, false);
+        }
+      } catch (err) {
+        console.error('API Error:', err);
+        showToast('Server connection failed. Please try again later.', false);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  }
+
+  // Handle Modal Registration Form Submit (simulated locally or linked to API)
   if (modalForm) {
     modalForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -267,13 +401,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const program = modalProgramName.textContent;
 
       if (!name || !email || !phone || !education) {
-        alert('Please fill in all details.');
+        showToast('Please fill in all details.', false);
         return;
       }
 
-      // Complete registration process
       closeRegistrationModal();
-      showToast(`Success! Registered for ${program}. We will contact you soon.`);
+      showToast(`Local Simulation: Registered for ${program}. We will contact you soon.`, true);
     });
   }
 });
