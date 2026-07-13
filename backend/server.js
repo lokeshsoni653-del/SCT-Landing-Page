@@ -23,9 +23,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// API Routes
-app.use('/api', apiRoutes);
+// API & Admin Routes (Mounted at both /api and root prefixes for seamless Vercel Serverless compatibility)
 app.use('/api/admin', adminRoutes);
+app.use('/admin', adminRoutes);
+app.use('/api', apiRoutes);
+app.use('/', apiRoutes);
 
 // Serve Admin static files under /admin
 app.use('/admin', express.static(path.join(__dirname, 'public/admin')));
