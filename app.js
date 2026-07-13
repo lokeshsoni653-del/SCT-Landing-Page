@@ -316,17 +316,25 @@ document.addEventListener('DOMContentLoaded', () => {
           })
         });
 
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-          showToast(`Thank you, ${name}! Your message was successfully stored.`, true);
-          contactForm.reset();
+        if (response.ok) {
+          const result = await response.json();
+          if (result.success) {
+            showToast(`Thank you, ${name}! Your message was successfully stored.`, true);
+            contactForm.reset();
+          } else {
+            showToast(`Error: ${result.error || 'Unable to submit.'}`, false);
+          }
         } else {
-          showToast(`Error: ${result.error || 'Unable to submit.'}`, false);
+          let errText = 'Server returned error status ' + response.status;
+          try {
+            const errJson = await response.json();
+            if (errJson && errJson.error) errText = errJson.error;
+          } catch(e) {}
+          showToast(`Submission failed: ${errText}`, false);
         }
       } catch (err) {
         console.error('API Error:', err);
-        showToast('Server connection failed. Storing message locally instead.', false);
+        showToast('Connection error. Please try again.', false);
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
@@ -371,17 +379,25 @@ document.addEventListener('DOMContentLoaded', () => {
           })
         });
 
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-          closeInquiryModal();
-          showToast(`Success! Your inquiry for ${department} has been submitted.`, true);
+        if (response.ok) {
+          const result = await response.json();
+          if (result.success) {
+            closeInquiryModal();
+            showToast(`Success! Your inquiry for ${department} has been submitted.`, true);
+          } else {
+            showToast(`Error: ${result.error || 'Submission failed.'}`, false);
+          }
         } else {
-          showToast(`Error: ${result.error || 'Submission failed.'}`, false);
+          let errText = 'Server returned error status ' + response.status;
+          try {
+            const errJson = await response.json();
+            if (errJson && errJson.error) errText = errJson.error;
+          } catch(e) {}
+          showToast(`Submission failed: ${errText}`, false);
         }
       } catch (err) {
         console.error('API Error:', err);
-        showToast('Server connection failed. Please try again later.', false);
+        showToast('Connection error. Please try again.', false);
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
