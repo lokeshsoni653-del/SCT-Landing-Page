@@ -38,15 +38,16 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-// Port configuration
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`==================================================`);
-  console.log(` SCT Backend Server running on port ${PORT}`);
-  console.log(` Admin Dashboard: http://localhost:${PORT}/admin`);
-  console.log(` Main Landing Page: http://localhost:${PORT}/`);
-  console.log(`==================================================`);
-});
+// Port configuration for local standalone execution
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`==================================================`);
+    console.log(` SCT Backend Server running on port ${PORT}`);
+    console.log(` Admin Dashboard: http://localhost:${PORT}/admin`);
+    console.log(` Main Landing Page: http://localhost:${PORT}/`);
+    console.log(`==================================================`);
+  });
+}
 
 module.exports = app;

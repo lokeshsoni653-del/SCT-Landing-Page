@@ -5,9 +5,13 @@ const path = require('path');
 const Contact = require('../models/Contact');
 const Inquiry = require('../models/Inquiry');
 
-const DATA_DIR = path.join(__dirname, '../data');
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+const DATA_DIR = process.env.VERCEL ? path.join('/tmp', 'data') : path.join(__dirname, '../data');
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (e) {
+  console.warn('Serverless filesystem notice:', e.message);
 }
 
 const CONTACTS_FILE = path.join(DATA_DIR, 'contacts.json');

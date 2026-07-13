@@ -5,7 +5,7 @@ const path = require('path');
 const Contact = require('../models/Contact');
 const Inquiry = require('../models/Inquiry');
 
-const DATA_DIR = path.join(__dirname, '../data');
+const DATA_DIR = process.env.VERCEL ? path.join('/tmp', 'data') : path.join(__dirname, '../data');
 const CONTACTS_FILE = path.join(DATA_DIR, 'contacts.json');
 const INQUIRIES_FILE = path.join(DATA_DIR, 'inquiries.json');
 
