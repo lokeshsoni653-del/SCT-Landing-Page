@@ -1,14 +1,34 @@
 {
   "version": 2,
-  "outputDirectory": ".",
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/:path*",
-      "destination": "/backend/server.js"
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/server.js"
     },
     {
-      "source": "/admin/:path*",
-      "destination": "/backend/server.js"
+      "src": "/api",
+      "dest": "backend/server.js"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "backend/server.js"
+    },
+    {
+      "src": "/admin",
+      "dest": "backend/server.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
