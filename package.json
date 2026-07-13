@@ -4,8 +4,7 @@
   "description": "Students Club Tharparkar landing page and Express backend unified repository",
   "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "build": "echo 'Vanilla migration - no build step required'"
+    "start": "node backend/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
